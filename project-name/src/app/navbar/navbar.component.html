@@ -1,4 +1,4 @@
-<div class="py-11 bg-slate-900">
+<div class="py-9 bg-slate-900">
     <nav class="border-b opacity-100 border-gray-700 navbar flex items-center justify-between py-4 px-10 fixed w-full top-0 z-50 
     bg-blue-950 bg-opacity-75 backdrop-blur-lg ">
       <div>
@@ -8,7 +8,7 @@
 
       <ul class="flex space-x-4 navbar-links text-white justify-end
           cursor-pointer ml-auto font-lato">
-        <li class = "flex mx-2 w-28 h-14 justify-center items-center
+        <li class = "flex mx-2 w-28 h-10 justify-center items-center
             border-b-2 hover:bg-opacity-0 hover:text-electricBlue hover:border-b-2
             {{ getCurrentURL() === getBaseURL() + '/home'
             ? 'selected border-b-2 selected border-electricBlue text-electricBlue' 
@@ -17,7 +17,7 @@
           <a>Home</a>
         </li>
 
-        <li class = "flex mx-2 w-28 h-14 justify-center items-center
+        <li class = "flex mx-2 w-28 h-10 justify-center items-center
           border-b-2 hover:bg-opacity-0 hover:border-b-2 
           {{ getCurrentURL() === getBaseURL() + '/item/16'
           ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
@@ -25,6 +25,16 @@
           routerLink="/item/16">
           <a>Animation</a>
         </li>
+
+        <li class = "flex mx-2 w-40 h-10 justify-center items-center
+        border-b-2 hover:bg-opacity-0 hover:border-b-2 
+        {{ getCurrentURL() === getBaseURL() + '/visualising-density'
+        ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
+        : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
+        routerLink="/visualising-density">
+        <a>Visualising Density</a>
+      </li>
+
       </ul>
       <div class="navbar-actions">
         <!-- Add login/logout buttons or user-related actions here -->

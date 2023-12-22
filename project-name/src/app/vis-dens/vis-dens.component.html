@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<app-navbar></app-navbar>
+
+<body class="text-white bg-blue-950">
+
+
+    <div class="flex">
+
+        <!-- Split each section into 3, one for the image and and text, one for the scale, and one for the 
+            corresponding density values -->
+        <div [ngSwitch]="scrollPosition" class="fixed w-3/4 flex p-10">
+            <div>
+                <img *ngSwitchCase="'top'" src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
+                <img *ngSwitchCase="'middle'" src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
+                <img *ngSwitchCase="'bottom'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
+            </div>
+
+            <div class="p-10">
+                Montreal <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
+            </div>
+        </div>
+
+
+        <!-- Adding a non-fixed object of the same width to correctly position the other object -->
+        <div class="w-3/4"></div>
+
+        <div class="w-4 px-2" style="background: linear-gradient(to bottom, #e74c3c, #3498db); height: 1000vh;"></div>
+
+        <div class=" bg-blue-950 w-1/4 p-10 ">
+            12,000 people / km <sup>2</sup>
+        </div>
+
+
+    </div>
+
+    <div class="flex py-60">
+
+        <!-- Split each section into 3, one for the image and and text, one for the scale, and one for the 
+            corresponding density values -->
+
+        <div class="w-3/4">
+            <div class="flex p-10">
+                <div>
+                    <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
+                </div>
+    
+                <div class="p-10 border-r h-full">
+                    Montreal <em> (Le Plateau Mont Royal)</em> : Population Density ~12,000 people per square km
+                </div>
+            </div>
+
+            <div class="flex p-10">
+                <div>
+                    <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
+                </div>
+    
+                <div class="p-10 border-r h-full">
+                    Montreal2 <em> (Le Plateau Mont Royal)</em> : Population Density ~12,000 people per square km
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="w-4 px-2" style="background: linear-gradient(to bottom, #e74c3c, #3498db);"></div>
+
+        <div class=" bg-blue-950 w-1/4 p-10 border-l-2 border-white">
+            12,000 people / km <sup>2</sup>
+        </div>
+
+    </div>
+
+    <p>Visualising Density</p>
+    
+    <div class="flex p-4">
+
+
+        <img src="assets/images/Boston.JPG" alt="Boston Image" class="w-2/3 mr-4">
+
+        <div>
+            Boston <em> (Back Bay / Beacon Hill)</em> : Population Density ~18,000 people per square km
+        </div>
+
+
+    </div>
+
+</body>

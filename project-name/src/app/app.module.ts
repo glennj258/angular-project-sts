@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PopularMediaComponent } from './popular-media/popular-media.component';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
+import { VisDensComponent } from './vis-dens/vis-dens.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MapComponent } from './map/map.component';
     NavbarComponent,
     PopularMediaComponent,
     HomeComponent,
-    MapComponent
+    MapComponent,
+    VisDensComponent
   ],
   imports: [
     HttpClientModule,
