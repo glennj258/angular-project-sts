@@ -12,9 +12,9 @@
             corresponding density values -->
         <div [ngSwitch]="scrollPosition" class="fixed w-3/4 flex p-10">
             <div>
-                <img *ngSwitchCase="'top'" src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
-                <img *ngSwitchCase="'middle'" src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
-                <img *ngSwitchCase="'bottom'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
+                <img *ngSwitchCase="'top'" [@enterTrigger]="'fadeIn'" src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
+                <img *ngSwitchCase="'middle'" [@enterTrigger]="'fadeIn'" src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
+                <img *ngSwitchCase="'bottom'" [@enterTrigger]="'fadeIn'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
             </div>
 
             <div class="p-10">

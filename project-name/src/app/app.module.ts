@@ -13,6 +13,7 @@ import { PopularMediaComponent } from './popular-media/popular-media.component';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { VisDensComponent } from './vis-dens/vis-dens.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { VisDensComponent } from './vis-dens/vis-dens.component';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
