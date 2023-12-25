@@ -40,7 +40,33 @@
                 </div>
 
                 <!-- Paris Image -->
-                <div *ngSwitchCase="'top-middle'" class = "reveal">
+                <!-- <div *ngSwitchCase="'top-middle'" class = "reveal">
+                    <div class="flex">
+                        <div>
+                            <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12">
+                            Paris <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Boston Image -->
+                <div *ngSwitchCase="'middle'" class = "reveal">
+                    <div class="flex">
+                        <div>
+                            <img src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12">
+                            Boston <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paris Image -->
+                <div *ngSwitchCase="'bottom'" class = "reveal">
                     <div class="flex">
                         <div>
                             <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
@@ -51,32 +77,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Boston Image -->
-                <!-- <div *ngSwitchCase="'middle'" [@switchAnimation]>
-                    <div class="flex">
-                        <div>
-                            <img src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
-                        </div>
-                        
-                        <div class="p-12">
-                            Boston <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Paris Image -->
-                <!-- <div *ngSwitchCase="'bottom'" [@switchAnimation]>
-                    <div class="flex">
-                        <div>
-                            <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
-                        </div>
-                        
-                        <div class="p-12">
-                            Paris <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
-                        </div>
-                    </div>
-                </div> -->
 
 
                 <!-- <img *ngSwitchCase="'top-middle'" [@switchAnimation]="'fadeIn'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">

@@ -71,11 +71,6 @@ export class VisDensComponent {
       this.scrollPosition = 'top';
       this.fadeState = 'fadeIn'
       console.log('top section')
-    } else if (scrollY < ((windowHeight * 3) + (windowHeight / 3))) {
-      this.scrollPosition = 'top';
-      //this.scrollPosition = 'top-middle';
-      this.fadeState = 'fadeOut'
-      console.log('top middle section')
     } else if (scrollY < (2 * windowHeight) * 3) {
       this.scrollPosition = 'middle';
       this.fadeState = 'fadeIn'
@@ -104,12 +99,28 @@ export class VisDensComponent {
       var scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
 
-      if (scrollY < windowHeight * 3) {
-          reveals[i].classList.add("active")
+      // for the first picture -  display solid until 8/9 of it's section - fade out until 1/9 of the next
+      if (scrollY < (windowHeight * 3) - (windowHeight / 3)) {
+        reveals[i].classList.add("active")
       }
-      else{
+      else if (scrollY < (windowHeight * 3) + (windowHeight / 3)){
         reveals[i].classList.remove("active")
       }
+      // repeat for the second picture
+      else if (scrollY < 2 * (windowHeight * 3) - (windowHeight / 3)){
+        reveals[i].classList.add("active")
+      }
+      else if (scrollY < 2 * (windowHeight * 3) + (windowHeight / 3)){
+        reveals[i].classList.remove("active")
+      }
+      // and for the third
+      else if (scrollY < 3 * (windowHeight * 3) - (windowHeight / 3)){
+        reveals[i].classList.add("active")
+      }
+      else {
+        reveals[i].classList.remove("active")
+      }
+
 
 
       // if (revealtop < windowheight - revealpoint){
