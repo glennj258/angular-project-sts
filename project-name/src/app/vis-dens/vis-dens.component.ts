@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     state('fadeOut', style({
       opacity: '0'
     })),
-    transition('void => *', [style({opacity: '0'}), animate('1s')])
+    transition('void => *', [style({opacity: '0'}), animate('2s')])
     ]),
     // Define the fade in/out animation
     trigger('fadeInOut', [
@@ -27,17 +27,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]),
     trigger('switchAnimation', [
       state('*', style({
-        opacity: 1
+        opacity: 1,
+        transform: 'translateX(0)'
       })),
       transition(':enter', [
         style({
-          opacity: 1
+          opacity: 0,
+          transform: 'translateX(-100%)'
         }),
-        animate('1s ease-in')
+        animate('300ms ease-in')
       ]),
       transition(':leave', [
-        animate('1s ease-out', style({
-          opacity: 0
+        animate('300ms ease-out', style({
+          opacity: 0,
+          transform: 'translateX(100%)'
         }))
       ])
     ])
