@@ -27,7 +27,7 @@
 
             <div>
                 <!-- Montreal Image -->
-                <div *ngSwitchCase="'top'" [@switchAnimation]>
+                <div *ngSwitchCase="'top'" class = "reveal">
                     <div class="flex">
                         <div>
                             <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
@@ -40,7 +40,7 @@
                 </div>
 
                 <!-- Paris Image -->
-                <div *ngSwitchCase="'top-middle'" [@enterTrigger]>
+                <div *ngSwitchCase="'top-middle'" class = "reveal">
                     <div class="flex">
                         <div>
                             <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- Boston Image -->
-                <div *ngSwitchCase="'middle'" [@enterTrigger]>
+                <!-- <div *ngSwitchCase="'middle'" [@switchAnimation]>
                     <div class="flex">
                         <div>
                             <img src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
@@ -63,10 +63,10 @@
                             Boston <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Paris Image -->
-                <div *ngSwitchCase="'bottom'" [@enterTrigger]>
+                <!-- <div *ngSwitchCase="'bottom'" [@switchAnimation]>
                     <div class="flex">
                         <div>
                             <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
@@ -76,7 +76,7 @@
                             Paris <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- <img *ngSwitchCase="'top-middle'" [@switchAnimation]="'fadeIn'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
