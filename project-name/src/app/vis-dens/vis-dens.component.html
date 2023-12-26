@@ -16,7 +16,7 @@
 
         <!-- Split each section into 3, one for the image and and text, one for the scale, and one for the 
             corresponding density values -->
-        <div [ngSwitch]="scrollPosition" class="fixed w-3/4 flex p-10">
+        <div [ngSwitch]="scrollPosition" class="varfix">
 
             <!-- <div data-aos="fade-in">
                 <img *ngSwitchCase="'top'" src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
@@ -59,7 +59,7 @@
                             <img src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
                         </div>
                         
-                        <div class="p-12">
+                        <div class="p-12"> 
                             Boston <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
                         </div>
                     </div>
@@ -93,9 +93,9 @@
         <!-- Adding a non-fixed object of the same width to correctly position the other object -->
         <div class="w-3/4"></div>
 
-        <div class="w-4 px-2" style="background: linear-gradient(to bottom, #e74c3c, #3498db); height: 1000vh;"></div>
+        <div id="colour-gradient" class="w-4 px-2 flex-grow" style="background: linear-gradient(to bottom, #e74c3c, #3498db); height: 900vh;"></div>
 
-        <div class=" bg-blue-950 w-1/4 p-10 font-medium text-xl">
+        <div class=" bg-blue-950 w-1/4 p-10 font-medium text-xl flex-grow">
             <b><i>12,000 people / km <sup>2</sup></i></b>
             <svg class="absolute top-24 left-3/4 w-24 h-24">
                 <polygon points="2,2 22,11 2,22" fill="#e74c3c" />

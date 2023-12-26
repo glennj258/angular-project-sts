@@ -10,3 +10,18 @@
     transform: 'translateY(0px)';
     opacity: 1;
 }
+
+.varfix{
+    position: 'fixed';
+    width: 75%; /* w-3/4 */
+    padding: 2.5rem; /* p-10 */
+    flex-grow: 1; /* flex-grow */
+}
+
+.varfix.varfixactive{
+    position: 'fixed';
+    padding: 2.5rem; /* p-10 */
+    flex-grow: 1; /* flex-grow */
+    opacity: 1;
+    top: 808vh;
+}

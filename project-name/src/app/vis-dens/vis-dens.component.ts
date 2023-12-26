@@ -60,12 +60,33 @@ export class VisDensComponent {
 
   fadeState: string = 'fadeIn';
   scrollPosition: string = 'top';
+  //sidebarHeight: number = 0;
+  
+  colourElement:HTMLDivElement | null = document.getElementById('colour-gradient')  as HTMLDivElement;
+  
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     // Calculate the scroll position as needed
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
+    const scrolledPixels = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+
+
+    if (this.colourElement !== null) {
+      const sidebarHeight = this.colourElement.offsetHeight;
+      console.log("Not null")
+      console.log(sidebarHeight)
+    }
+    else{
+      const sidebarHeight = 0
+      console.log("null")
+    }
+    
+    console.log(scrolledPixels)
+    
+    
 
     if (scrollY < windowHeight * 3) {
       this.scrollPosition = 'top';
@@ -75,9 +96,12 @@ export class VisDensComponent {
       this.scrollPosition = 'middle';
       this.fadeState = 'fadeIn'
       console.log('middle section')
-    } else {
+    } else if (scrolledPixels < 9 * windowHeight){
       this.scrollPosition = 'bottom';
       console.log('bottom')
+    }
+    else {
+      this.scrollPosition = 'post-bottom'
     }
   }
 
@@ -89,6 +113,9 @@ export class VisDensComponent {
 
   reveal(){
     var reveals = document.querySelectorAll('.reveal')
+    var varfixs = document.querySelectorAll('.varfix')
+
+    console.log(reveals.length)
 
     for( var i=0; i < reveals.length; i++){
 
@@ -114,22 +141,30 @@ export class VisDensComponent {
         reveals[i].classList.remove("active")
       }
       // and for the third
-      else if (scrollY < 3 * (windowHeight * 3) - (windowHeight / 3)){
+      else if (scrollY < 8 * (windowHeight)){
         reveals[i].classList.add("active")
       }
       else {
-        reveals[i].classList.remove("active")
+        reveals[i].classList.add("active")
       }
+    }
 
 
+    for( var i=0; i < varfixs.length; i++){
+      var windowheight = window.innerHeight;
+      var scrollY = window.scrollY;
+      
 
-      // if (revealtop < windowheight - revealpoint){
-      //   reveals[i].classList.add("active")
-      // }
-      // else{
-      //   reveals[i].classList.remove("active")
-      // }
-
+      if (scrollY < 8*windowheight){
+        varfixs[i].classList.remove("varfixactive")
+        varfixs[i].classList.add("fixed")
+        varfixs[i].classList.remove("absolute")
+      }
+      else {
+        varfixs[i].classList.remove("fixed")
+        varfixs[i].classList.add("absolute")
+        varfixs[i].classList.add("varfixactive")
+      }
     }
   }
 }
