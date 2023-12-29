@@ -25,3 +25,9 @@
     opacity: 1;
     top: 808vh;
 }
+
+/* attempt at proportional spacing*/
+.proportional-space-5 > * {
+    margin-right: calc(5vw * 1);
+    margin-left: calc(5vw * -1);
+}

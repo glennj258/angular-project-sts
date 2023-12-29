@@ -131,25 +131,44 @@
 
         <!-- Scale bar -->
 
-        <div class="px-40 flex space-x-20"> <!--Scale bar ticks-->
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-            <div class="w-1 h-1.5 bg-white"></div>
-        </div>
-
-        <div  class="px-40">
-            <div class="w-full h-6" style="background: linear-gradient(to right, #e74c3c, #3498db);"></div>
+        <div  style="padding-left: 5vw; padding-right: 5vw;" class="py-10">
+            <!-- Ticks -->
+            <div class="flex justify-between">
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+                <div class="w-1 h-1.5 bg-white"></div>
+            </div>
+            <!-- Scale bar -->
+            <div id="colour-gradient2" class="w-full h-6" style="background: linear-gradient(to right, #e74c3c, #3498db);"></div>
         </div>
         
 
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const element = document.getElementById('colour-gradient2');
+        if (element) {
+          const computedStyle = getComputedStyle(element);
+          const gradientValue = computedStyle.backgroundImage;
+      
+          // Parse gradient value to extract color stops
+          const colorStops = gradientValue.match(/rgba?\([^)]+\)|#[0-9a-fA-F]+/g) || [];
+          console.log("colour gradient 2 found")
+          console.log("Gradient Colors:", colorStops);
+        }
+        else{
+          console.error("Element with ID 'exampleElement' not found.");
+        }
+  
+      });
+
+    </script>
 
     <!-- Text div -->
     <div>

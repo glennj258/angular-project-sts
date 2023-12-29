@@ -53,6 +53,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ])
   ]
 })
+
 export class VisDensComponent {
 
 
@@ -61,8 +62,18 @@ export class VisDensComponent {
   fadeState: string = 'fadeIn';
   scrollPosition: string = 'top';
   //sidebarHeight: number = 0;
-  
-  colourElement:HTMLDivElement | null = document.getElementById('colour-gradient')  as HTMLDivElement;
+
+
+
+  // run your script in here
+  colourElement:HTMLDivElement | null = document.getElementById('colour-gradient2')  as HTMLDivElement;
+
+
+  onLoad(event:Event){
+
+  }
+
+
   
 
   @HostListener('window:scroll', ['$event'])
@@ -107,6 +118,36 @@ export class VisDensComponent {
 
   ngOnInit() {
     window.addEventListener('scroll', this.reveal)
+
+    // get the colours used in the colour gradient
+    const element = document.getElementById('colour-gradient2');
+    if (element) {
+      const computedStyle = getComputedStyle(element);
+      const gradientValue = computedStyle.backgroundImage;
+  
+      // Parse gradient value to extract color stops
+      const colorStops = gradientValue.match(/rgba?\([^)]+\)|#[0-9a-fA-F]+/g) || [];
+      console.log("colour gradient 2 found")
+      console.log("Gradient Colors:", colorStops);
+      const startColor = colorStops[0]
+      const endColor = colorStops[colorStops.length - 1]
+
+      if (startColor){
+        const colors = calculateGradientColors(startColor, endColor, 10);
+        console.log(colors)
+      }
+      else{
+        console.error("colour gradient start not found")
+        const startColor = 'rgb(1,1,1)'
+        const endColor = 'rgb(1,1,1)'
+        const colors = calculateGradientColors(startColor, endColor, 10);
+      }
+      
+    }
+
+    else{
+      console.error("Element with ID 'colour-gradient2' not found.");
+    }
   }
 
   
@@ -166,5 +207,60 @@ export class VisDensComponent {
         varfixs[i].classList.add("varfixactive")
       }
     }
+  }
+
+  
+}
+
+function calculateGradientColors(startColor:string, endColor:string, steps:number) {
+  console.log("start colour", startColor)
+  console.log("end colour", endColor)
+  const startRGB = rgbStringToArray(startColor)// hexToRGB(startColor);
+  const endRGB = rgbStringToArray(endColor)// hexToRGB(endColor);
+
+  console.log("RGB Start, end", startRGB, endRGB)
+  const colors = [];
+
+  for (let i = 0; i < steps; i++) {
+    const interpolatedColor = lerpColor(startRGB, endRGB, i / (steps - 1));
+    const hexColor = rgbToHex(interpolatedColor);
+    colors.push(hexColor);
+    console.log("Interpolated, hex colour", interpolatedColor, hexColor)
+  }
+
+  return colors;
+}
+
+function hexToRGB(hex:string) {
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return [r, g, b];
+}
+
+function lerpColor(start:number[], end:number[], t:number) {
+  return [
+    Math.round(start[0] + t * (end[0] - start[0])),
+    Math.round(start[1] + t * (end[1] - start[1])),
+    Math.round(start[2] + t * (end[2] - start[2])),
+  ];
+}
+
+function rgbToHex(rgb:number[]) {
+  return `#${((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1)}`;
+}
+
+function rgbStringToArray(rgbString:string) {
+  // Use a regular expression to extract the numeric values
+  const matches = rgbString.match(/(\d+),\s*(\d+),\s*(\d+)/);
+
+  if (matches) {
+    // Convert the matched values to integers and return as an array
+    const [, r, g, b] = matches.map(Number);
+    return [r, g, b];
+  } else {
+    // Return a default value or handle the case where the regex doesn't match
+    return [];
   }
 }
