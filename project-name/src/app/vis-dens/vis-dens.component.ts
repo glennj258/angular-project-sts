@@ -98,22 +98,52 @@ export class VisDensComponent {
     console.log(scrolledPixels)
     
     
+    // change the pictures which are displayed
 
-    if (scrollY < windowHeight * 3) {
-      this.scrollPosition = 'top';
-      this.fadeState = 'fadeIn'
-      console.log('top section')
-    } else if (scrollY < (2 * windowHeight) * 3) {
-      this.scrollPosition = 'middle';
-      this.fadeState = 'fadeIn'
-      console.log('middle section')
-    } else if (scrolledPixels < 9 * windowHeight){
-      this.scrollPosition = 'bottom';
-      console.log('bottom')
+    // Canberra 0 - 6000 (0-1.5wh)
+    if (scrollY < windowHeight * 1.5) {
+      this.scrollPosition = 'Canberra';
+      console.log('Canberra')
+    // Vancouver 6000 - 10000 (1.5-2.5wh)
+    } else if (scrollY < (windowHeight) * 2.5) {
+      this.scrollPosition = 'Vancouver';
+      console.log('Vancouver')
+    // Montreal 10000 - 14000 (2.5-3.5wh)
+    } else if (scrollY < (windowHeight) * 3.5) {
+      this.scrollPosition = 'Montreal';
+      console.log('Montreal')
+    // Boston 14000 - 20000 (3.5-5wh)
+    } else if (scrollY < (windowHeight) * 5) {
+      this.scrollPosition = 'Boston';
+      console.log('Boston')
+    // Paris 20000 - 30000 (5-7.5wh)
+    } else if (scrollY < (windowHeight) * 7.5) {
+      this.scrollPosition = 'Paris';
+      console.log('Paris')
+    // New York 30000 - 36000 (7.5-9wh)
+    } else if (scrollY < (windowHeight) * 9) {
+      this.scrollPosition = 'NYC';
+      console.log('NYC')
     }
     else {
       this.scrollPosition = 'post-bottom'
     }
+
+    // if (scrollY < windowHeight * 3) {
+    //   this.scrollPosition = 'top';
+    //   this.fadeState = 'fadeIn'
+    //   console.log('top section')
+    // } else if (scrollY < (2 * windowHeight) * 3) {
+    //   this.scrollPosition = 'middle';
+    //   this.fadeState = 'fadeIn'
+    //   console.log('middle section')
+    // } else if (scrolledPixels < 9 * windowHeight){
+    //   this.scrollPosition = 'bottom';
+    //   console.log('bottom')
+    // }
+    // else {
+    //   this.scrollPosition = 'post-bottom'
+    // }
   }
 
   ngOnInit() {
@@ -172,14 +202,14 @@ export class VisDensComponent {
         reveals[i].classList.add("active")
       }
       else if (scrollY < (windowHeight * 3) + (windowHeight / 3)){
-        reveals[i].classList.remove("active")
+        reveals[i].classList.add("active") // changed from remove
       }
       // repeat for the second picture
       else if (scrollY < 2 * (windowHeight * 3) - (windowHeight / 3)){
         reveals[i].classList.add("active")
       }
       else if (scrollY < 2 * (windowHeight * 3) + (windowHeight / 3)){
-        reveals[i].classList.remove("active")
+        reveals[i].classList.add("active") // changed from remove
       }
       // and for the third
       else if (scrollY < 8 * (windowHeight)){

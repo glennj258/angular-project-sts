@@ -26,6 +26,88 @@
             <img *ngSwitchCase="'bottom'" data-aos="fade-in" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4"> -->
 
             <div>
+
+                <!-- Canberra Image -->
+                <div *ngSwitchCase="'Canberra'" class = "reveal flex">
+                        <!-- <div class="image"></div> -->
+                        <div class="w-3/4">
+                            <img src="assets/images/Canberra.jpg" alt="Canberra Image" width="200" height="200">
+                        </div>
+                        
+                        <div class="p-12 w-1/4">
+                            Canberra <em>(Ainslie)</em> : Population Density ~2,000 people per square km
+                        </div>
+                </div>
+
+                <!-- Vancouver Image -->
+                <div *ngSwitchCase="'Vancouver'" class = "reveal">
+                    <div class="flex">
+                        <div class="w-3/4">
+                            <img src="assets/images/Vancouver.jpg" alt="Vancouver Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12 w-1/4">
+                            Vancouver <em>(Kensington-Cedar Cottage)</em> : Population Density ~8,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Montreal Image -->
+                <div *ngSwitchCase="'Montreal'" class = "reveal">
+                    <div class="flex">
+                        <div class="w-3/4">
+                            <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12 w-1/4">
+                            Montreal <em> (Le Plateau-Mont-Royal)</em> : Population Density ~12,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boston Image -->
+                <div *ngSwitchCase="'Boston'" class = "reveal">
+                    <div class="flex">
+                        <div class="w-3/4">
+                            <img src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12 w-1/4"> 
+                            Boston <em> (Back Bay)</em>: Population Density ~16,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paris Image -->
+                <div *ngSwitchCase="'Paris'" class = "reveal">
+                    <div class="flex">
+                        <div class="w-3/4">
+                            <img src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12 w-1/4">
+                            Paris <em> (Les Halles)</em> : Population Density ~24,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- New York Image -->
+                <div *ngSwitchCase="'NYC'" class = "reveal">
+                    <div class="flex">
+                        <div class="w-3/4">
+                            <img src="assets/images/New York.jpeg" alt="New York Image" class="mr-4">
+                        </div>
+                        
+                        <div class="p-12 w-1/4">
+                            New York <em>(Greenwich Village)</em> : Population Density ~36,000 people per square km
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Old images -->
+
                 <!-- Montreal Image -->
                 <div *ngSwitchCase="'top'" class = "reveal">
                     <div class="flex">
@@ -79,6 +161,8 @@
                 </div>
 
 
+
+
                 <!-- <img *ngSwitchCase="'top-middle'" [@switchAnimation]="'fadeIn'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4">
                 <img *ngSwitchCase="'middle'" [@enterTrigger]="'fadeIn'" src="assets/images/Boston.JPG" alt="Montreal Image" class="mr-4">
                 <img *ngSwitchCase="'bottom'" [@enterTrigger]="'fadeIn'" src="assets/images/Paris.JPG" alt="Montreal Image" class="mr-4"> -->
@@ -127,7 +211,25 @@
         <!-- Arrows -->
         <div>
 
+            <div id="svg-container">
+                <svg class= "w-100 h-20"viewBox="0 0 100 100" preserveAspectRatio="none">
+            
+                    <polygon points="10,50 90,50 90,70 10,70" fill="white" />
+                    <polygon points="90,20 95,50 90,80" fill="white" />
+                </svg>
+            </div>
+            <!-- <div class="w-100 h-20">
+                <svg width="100%" height="100%"> -->
+                    <!-- Arrow polygon -->
+                    <!-- <polygon points="0,7 100,7 100,13 0,13" fill="white" />
+                    <polygon points="100,0 120,10 100,20" fill="white" /> -->
+
+                    <!-- <polygon points="10%,50% 90%,50% 90%,70% 10%,70%" fill="white" />
+                    <polygon points="90%,20% 95%,50% 90%,80%" fill="white" />
+                </svg>
+            </div> -->
         </div>
+
 
         <!-- Scale bar -->
 
@@ -150,25 +252,6 @@
         
 
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const element = document.getElementById('colour-gradient2');
-        if (element) {
-          const computedStyle = getComputedStyle(element);
-          const gradientValue = computedStyle.backgroundImage;
-      
-          // Parse gradient value to extract color stops
-          const colorStops = gradientValue.match(/rgba?\([^)]+\)|#[0-9a-fA-F]+/g) || [];
-          console.log("colour gradient 2 found")
-          console.log("Gradient Colors:", colorStops);
-        }
-        else{
-          console.error("Element with ID 'exampleElement' not found.");
-        }
-  
-      });
-
-    </script>
 
     <!-- Text div -->
     <div>
