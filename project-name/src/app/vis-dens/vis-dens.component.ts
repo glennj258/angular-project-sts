@@ -54,7 +54,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 
-export class VisDensComponent {
+export class VisDensComponent{
 
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -64,6 +64,16 @@ export class VisDensComponent {
   //sidebarHeight: number = 0;
   noScaleTicks: number = 18;
   colors: any[] = [];
+  range_scaleticks: number[] = Array.from({length: this.noScaleTicks}, (_, index) => index + 1);
+  halfrange_scaleticks: number[] = Array.from({length: this.noScaleTicks/2}, (_, index) => index + 1);
+  thirdrange_scaleticks:number[] = Array.from({length: this.noScaleTicks/3}, (_, index) => index + 1);
+  windowWidth: number = 400; // undefined, but need to initialise
+  scale_width: number = this.getScaleWidth(this.windowWidth)
+
+  legendNamesProperties = {
+    'width': this.scale_width + 'px;'
+    // 'text-align': 'center;'
+  };
 
 
   // run your script in here
@@ -75,7 +85,12 @@ export class VisDensComponent {
   }
 
 
-  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    // Update window width on resize
+    this.windowWidth = window.innerWidth;
+    this.scale_width = this.getScaleWidth(this.windowWidth)
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
@@ -149,6 +164,8 @@ export class VisDensComponent {
 
   ngOnInit() {
     window.addEventListener('scroll', this.reveal)
+    this.windowWidth = window.innerWidth;
+    this.scale_width = this.getScaleWidth(this.windowWidth)
 
     // get the colours used in the colour gradient
     const element = document.getElementById('colour-gradient2');
@@ -274,6 +291,14 @@ export class VisDensComponent {
     }
 
     return text_data
+  }
+
+  getColors(): any[]{
+    return this.colors
+  }
+
+  getScaleWidth(windowWidth:number): number {
+    return (windowWidth - 0.1*windowWidth - 192) / 18
   }
 
   
