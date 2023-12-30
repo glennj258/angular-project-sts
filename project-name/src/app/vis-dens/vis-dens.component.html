@@ -100,7 +100,7 @@
                         </div>
                         
                         <div class="p-12 w-1/4">
-                            New York <em>(Greenwich Village)</em> : Population Density ~32,000 people per square km
+                            New York <em>(Greenwich Village)</em> : Population Density ~36,000 people per square km
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
 
             <svg class="absolute top-24 left-3/4" style="height: 900vh">
                 <ng-container *ngFor="let tick of generatePolygonData()">
-                  <polygon [attr.points]="tick.points" fill="blue"/>
+                  <polygon [attr.points]="tick.points" [attr.fill]="tick.color"/>
                   
                 </ng-container>
               </svg>

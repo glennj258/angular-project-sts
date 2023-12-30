@@ -63,6 +63,7 @@ export class VisDensComponent {
   scrollPosition: string = 'top';
   //sidebarHeight: number = 0;
   noScaleTicks: number = 18;
+  colors: any[] = [];
 
 
   // run your script in here
@@ -101,23 +102,23 @@ export class VisDensComponent {
     // change the pictures which are displayed
 
     // Canberra 0 - 6000 (0-1.5wh)
-    if (scrollY < windowHeight * 1.5) {
+    if (scrollY < windowHeight * 1.2) {
       this.scrollPosition = 'Canberra';
       console.log('Canberra')
     // Vancouver 6000 - 10000 (1.5-2.5wh)
-    } else if (scrollY < (windowHeight) * 2.5) {
+    } else if (scrollY < (windowHeight) * 2.2) {
       this.scrollPosition = 'Vancouver';
       console.log('Vancouver')
     // Montreal 10000 - 14000 (2.5-3.5wh)
-    } else if (scrollY < (windowHeight) * 3.5) {
+    } else if (scrollY < (windowHeight) * 3.2) {
       this.scrollPosition = 'Montreal';
       console.log('Montreal')
     // Boston 14000 - 20000 (3.5-5wh)
-    } else if (scrollY < (windowHeight) * 5) {
+    } else if (scrollY < (windowHeight) * 4.7) {
       this.scrollPosition = 'Boston';
       console.log('Boston')
     // Paris 20000 - 30000 (5-7.5wh)
-    } else if (scrollY < (windowHeight) * 7.5) {
+    } else if (scrollY < (windowHeight) * 7.2) {
       this.scrollPosition = 'Paris';
       console.log('Paris')
     // New York 30000 - 36000 (7.5-9wh)
@@ -151,7 +152,7 @@ export class VisDensComponent {
 
     // get the colours used in the colour gradient
     const element = document.getElementById('colour-gradient2');
-    const no_colours = 18;
+    const no_colours = this.noScaleTicks + 1;
     if (element) {
       const computedStyle = getComputedStyle(element);
       const gradientValue = computedStyle.backgroundImage;
@@ -164,14 +165,14 @@ export class VisDensComponent {
       const endColor = colorStops[colorStops.length - 1]
 
       if (startColor){
-        const colors = calculateGradientColors(startColor, endColor, no_colours);
-        console.log(colors)
+        this.colors = calculateGradientColors(startColor, endColor, no_colours);
+        console.log(this.colors)
       }
       else{
         console.error("colour gradient start not found")
         const startColor = 'rgb(1,1,1)'
         const endColor = 'rgb(1,1,1)'
-        const colors = calculateGradientColors(startColor, endColor, no_colours);
+        this.colors = calculateGradientColors(startColor, endColor, no_colours);
       }
       
     }
@@ -249,6 +250,7 @@ export class VisDensComponent {
       const polygon = {
         id: i,
         points: `3,${i * spacing + 2} 23,${i * spacing + 12} 3,${i * spacing + 22}`,
+        color: this.colors[i]
       };
       polygons.push(polygon); // 2,2 22,11 2,22 (triangle shape)
     }
