@@ -14,6 +14,7 @@
 .varfix{
     position: 'fixed';
     width: 75%; /* w-3/4 */
+    /* transform: translate(0%, 10%); */
     padding: 2.5rem; /* p-10 */
     flex-grow: 1; /* flex-grow */
 }
@@ -56,8 +57,3 @@ transform: rotate(-45deg);
     background-position: center;
   }
 
-
-  img {
-    width: 200%; /* Set the width as a percentage */
-    height: auto; /* Maintain the aspect ratio */
-  }

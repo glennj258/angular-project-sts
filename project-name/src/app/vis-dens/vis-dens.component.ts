@@ -62,7 +62,7 @@ export class VisDensComponent {
   fadeState: string = 'fadeIn';
   scrollPosition: string = 'top';
   //sidebarHeight: number = 0;
-
+  noScaleTicks: number = 18;
 
 
   // run your script in here
@@ -151,6 +151,7 @@ export class VisDensComponent {
 
     // get the colours used in the colour gradient
     const element = document.getElementById('colour-gradient2');
+    const no_colours = 18;
     if (element) {
       const computedStyle = getComputedStyle(element);
       const gradientValue = computedStyle.backgroundImage;
@@ -163,14 +164,14 @@ export class VisDensComponent {
       const endColor = colorStops[colorStops.length - 1]
 
       if (startColor){
-        const colors = calculateGradientColors(startColor, endColor, 10);
+        const colors = calculateGradientColors(startColor, endColor, no_colours);
         console.log(colors)
       }
       else{
         console.error("colour gradient start not found")
         const startColor = 'rgb(1,1,1)'
         const endColor = 'rgb(1,1,1)'
-        const colors = calculateGradientColors(startColor, endColor, 10);
+        const colors = calculateGradientColors(startColor, endColor, no_colours);
       }
       
     }
@@ -237,6 +238,40 @@ export class VisDensComponent {
         varfixs[i].classList.add("varfixactive")
       }
     }
+  }
+
+  generatePolygonData(): any[] {
+    const polygons = [];
+    const windowHeight = window.innerHeight;
+    const spacing = (windowHeight * 9 - 46) / this.noScaleTicks // take the full length of the setup and divide by the # desired ticks
+
+    for (let i = 1; i <= this.noScaleTicks; i++) {
+      const polygon = {
+        id: i,
+        points: `3,${i * spacing + 2} 23,${i * spacing + 12} 3,${i * spacing + 22}`,
+      };
+      polygons.push(polygon); // 2,2 22,11 2,22 (triangle shape)
+    }
+
+    return polygons;
+  }
+
+  generateTextData(): any[]{
+    const text_data = []
+    const windowHeight = window.innerHeight;
+    const spacing = (windowHeight * 9 - 46) / this.noScaleTicks // take the full length of the setup and divide by the # desired ticks
+
+    for (let i = 1; i <= this.noScaleTicks; i++) {
+      const text_data_indiv = {
+        id: i,
+        spacing: spacing - 46, // include text width to get spacing between // not used
+        offset: i* spacing + 21, // subtract the spacing of the triangle, and the width of the box
+        text_no: `${i*2000}`
+      };
+      text_data.push(text_data_indiv); // 2,2 22,11 2,22 (triangle shape)
+    }
+
+    return text_data
   }
 
   
