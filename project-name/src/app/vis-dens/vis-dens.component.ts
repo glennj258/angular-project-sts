@@ -71,7 +71,8 @@ export class VisDensComponent{
   scale_width: number = this.getScaleWidth(this.windowWidth)
 
   legendNamesProperties = {
-    'width': this.scale_width + 'px;'
+    'width': this.scale_width*2 + 'px',
+    'padding': this.scale_width + 'px'
     // 'text-align': 'center;'
   };
 
