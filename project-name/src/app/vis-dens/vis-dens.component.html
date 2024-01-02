@@ -231,132 +231,83 @@
          <!-- Adding legend to the scalebar and names of key cities -->
          <div style="padding-left: 5vw;" class = "flex py-0.5">
 
-            <div [ngStyle]="{ 'padding-left': this.scale_width*2 + 'px'}">
+            <div [ngStyle]="{ 'padding-left': this.scale_width*3 + 'px'}">
             </div>
 
-            <div [ngStyle]="{ 'width': this.scale_width + 'px'}"  >
-
-                <div class="flex justify-end items-end">
-                    <div class="w-1/2 h-0.5 bg-white"></div>
-                </div>
-                
-
-                <div class="flex items-center justify-center h-2">
-                    <div class="h-full w-0.5 bg-white"></div>
-                </div>
-            </div>
-
-
-
-
-
-            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  class="text-center text-sm">
+            <div [ngStyle]="{ 'width': this.scale_width*3 + 'px'}"  class="text-center text-sm">
                 RZ2 to RZ3 change
-                <div class="flex items-center justify-center h-2">
-                    <div class="h-full w-0.5 bg-white"></div>
-                </div>
-                <div>
-                    <div class="w-1/2 h-0.5 bg-white"></div>
-                </div>
             </div>
 
 
         </div>
 
-        <!-- SVG annotation -->
+        <!-- Row 1 - annotation -->
         <div style="padding-left: 5vw;" class = "flex py-0.5">
 
-            <div [ngStyle]="{ 'padding-left': this.scale_width*2.5 + 'px'}">
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class= "flex items-end w-full text-sm">
+                <div>
+                    RZ1 to RZ2 change
+                </div>
+                
+            </div>
+
+            <div [ngStyle]="{ 'padding-left': this.scale_width*0.5 + 'px'}">
             </div>
 
             <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  >
-                <svg class= "w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <polygon points="0,10 2,10 2,20, 0,20" fill="white"/>
-                    <polygon points="0,9 100,9 100,11 0,11" fill="white"/>
-                    <polygon points="98,0 100,0 100,10, 98,10" fill="white"/>
+                <svg class= "w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none" fill="grey">
+                    <polygon points="0,30 2,30 2,40, 0,40"/>
+                    <polygon points="0,29 100,29 100,31 0,31"/>
+                    <polygon points="98,0 100,0 100,30, 98,30"/>
 
                 </svg>
             </div>
         </div>
 
+        <!-- Row 2 - Arrows and annotations -->
+        <div style="padding-left: 5vw;" class = "flex py-0.5 h-5">
 
-
-        <!-- Arrows + Annotations 2 -->
-
-        <div style="padding-left: 5vw; padding-right: 5vw;" class="flex justify-between py-0">
-            <div *ngFor="let i of this.halfrange_scaleticks">
-
-                <div *ngIf="i === 1">
-                  
-                    <div class= "border border-blue-400 w-full text-sm">
-                        RZ1 to RZ2 change
-                    </div>
-                    <!-- annotation line -->
-                    <div class="flex items-center justify-center h-2">
-                        <div class="h-full w-0.5 bg-white"></div>
-                    </div>
-                    <svg class= "border border-blue-400 w-full h-0">
-
-                    </svg>
-                </div>
-                <div *ngIf="i !== 1">
-                    <svg class= "border border-blue-400 w-full h-2" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    </svg>
-                </div>
+            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}" >
             </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*0.5 + 'px'}" >
+                <svg class= "w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none" fill="grey">
+                    <polygon points="0,0 8,0 8,20, 0,20"/>
+                    <polygon points="0,16 100,16 100,24 0,24"/>
+                    <polygon points="92,20 100,20 100,40, 92,40"/>
+
+                </svg>
+            </div>
+
+            <div [ngStyle]="{ 'padding-left': this.scale_width*0.5 + 'px'}" >
+            </div>
+            
+            <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
+                <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <polygon points="0,8 80,8 80,12 0,12" fill="white" />
+                    <polygon points="75,0 100,10 75,20" fill="white" />
+                </svg>
+                
+            </div>
+
         </div>
 
-        <!-- Arrows -->
-        
-        <div style="padding-left: 5vw; padding-right: 5vw;" class="flex justify-between py-0">
-            <div *ngFor="let i of this.range_scaleticks">
+        <!-- Row 3 - Arrow -->
+        <div style="padding-left: 5vw;" class = "flex py-0.5">
 
-                <div *ngIf="i === 2">
-                    <!-- annotation line -->
-                    <div class="flex items-center justify-center h-0">
-                        <div class="w-full h-0.5 bg-white"></div>
-                        <div class="w-full h-0"></div>
-                    </div>
-
-                    <div class="flex items-center justify-center h-2">
-                        <div class="h-full w-0.5 bg-white"></div>
-                    </div>
-                    <svg class= "border border-blue-400 w-full h-2">
-                    </svg>
-                </div>
-
-                <div *ngIf="i === 3">
-                  
-                    <svg class= "border border-blue-400 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-
-                        <polygon points="0,8 80,8 80,12 0,12" fill="white" />
-                        <polygon points="75,0 100,10 75,20" fill="white" />
-                    </svg>
-                </div>
-                <div *ngIf="i !== 3 && i!==2">
-                    <svg class= "border border-blue-400 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    </svg>
-                </div>
+            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}">
             </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
+                <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <polygon points="0,8 80,8 80,12 0,12" fill="white" />
+                    <polygon points="75,0 100,10 75,20" fill="white" />
+                </svg>
+                
+            </div>
+
         </div>
 
-        <div style="padding-left: 5vw; padding-right: 5vw;" class="flex justify-between py-0">
-            <div *ngFor="let i of this.range_scaleticks">
-
-                <div *ngIf="i === 2">
-                  
-                    <svg class= "border border-blue-400 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-
-                        <polygon points="0,8 80,8 80,12 0,12" fill="white" />
-                        <polygon points="75,0 100,10 75,20" fill="white" />
-                    </svg>
-                </div>
-                <div *ngIf="i !== 2">
-                    <svg class= "border border-blue-400 w-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    </svg>
-                </div>
-            </div>
-        </div>
 
 
         <!-- Scale bar -->
