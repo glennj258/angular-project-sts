@@ -67,6 +67,7 @@ export class VisDensComponent{
   range_scaleticks: number[] = Array.from({length: this.noScaleTicks}, (_, index) => index + 1);
   halfrange_scaleticks: number[] = Array.from({length: this.noScaleTicks/2}, (_, index) => index + 1);
   thirdrange_scaleticks:number[] = Array.from({length: this.noScaleTicks/3}, (_, index) => index + 1);
+  no_scaleticks_range: number[] = Array.from({length: this.noScaleTicks + 1}, (_, index) => index + 1);
   windowWidth: number = 400; // undefined, but need to initialise
   scale_width: number = this.getScaleWidth(this.windowWidth)
 

@@ -349,15 +349,83 @@
                 <div class="w-1 h-1.5 bg-white"></div>
             </div> -->
 
+
+
             <!-- Scale bar -->
             <div id="colour-gradient2" class="w-full h-6" style="background: linear-gradient(to right, #e74c3c, #3498db);"></div>
+
+
+
+            <!-- Ticks -->
+            <div class="flex justify-between">
+
+               
+                <div *ngFor="let i of this.no_scaleticks_range">
+
+                    <div *ngIf="[2, 5, 7, 9, 13, 19].includes(i); else elseBlock">
+                        <div class="w-1 h-1.5 flex" [style.backgroundColor]="getColors()[i-1]"></div>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div class="w-1 h-1.5 flex"></div>
+                    </ng-template>
+                        
+                </div>
+            </div>
         </div>
 
-        <div style="padding-left: 5vw; padding-right: 5vw;">
-            <!-- <table> - failed, can't get an endpoint right [ngStyle]="{'padding-left': this.scale_width + 'px'}"-->
-            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  class="text-center border border-blue-400">
-                Canberra {{this.scale_width}}
+        <!-- Adding legend to the scalebar and names of key cities -->
+        <div style="padding-left: 5vw;" class = "flex py-0.5">
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  class="text-center">
+                
+                <!-- removed as slightly off the tick marks, attach ticks to scalebar instead -->
+                <!-- <div class="w-1 h-1.5 mx-auto" [style.backgroundColor]="getColors()[1]">
+                </div> -->
+
+                <div class="text-xs text-gray-400">2000</div>
+                Canberra
             </div>
+
+            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}">
+            </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class="text-center">
+                <div class="text-xs text-gray-400">
+                8000</div>
+                Vancouver
+            </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class="text-center">
+                <div class="text-xs text-gray-400">
+                12000</div>
+                Montreal
+            </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class="text-center">
+                <div class="text-xs text-gray-400">
+                16000</div>
+                Boston
+            </div>
+
+            <div [ngStyle]="{ 'padding-left': 2*this.scale_width + 'px'}">
+            </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class="text-center">
+                <div class="text-xs text-gray-400">
+                24000</div>
+                Paris
+            </div>
+
+            <div [ngStyle]="{ 'padding-left': 4*this.scale_width + 'px'}">
+            </div>
+
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class="text-center">
+                <div class="text-xs text-gray-400">
+                36000</div>
+                New York
+            </div>
+            
+
         </div>
         
 
