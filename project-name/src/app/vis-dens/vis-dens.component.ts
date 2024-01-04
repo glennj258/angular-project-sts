@@ -300,7 +300,7 @@ export class VisDensComponent{
   }
 
   getScaleWidth(windowWidth:number): number {
-    return (windowWidth - 0.1*windowWidth - 192) / 18
+    return (windowWidth - 0.1*windowWidth - 192) / 18 // 192 is the the padding (p-24 = 96 pixels) x2 for each side
   }
 
   
