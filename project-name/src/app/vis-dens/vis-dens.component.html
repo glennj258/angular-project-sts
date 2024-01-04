@@ -229,19 +229,13 @@
         <div class="py-10"></div> 
 
          <!-- Adding legend to the scalebar and names of key cities -->
+
+         <!-- Pad from the heading - legacy annotation spot-->
          <div style="padding-left: 5vw;" class = "flex py-0.5">
-
-            <div [ngStyle]="{ 'padding-left': this.scale_width*3 + 'px'}">
-            </div>
-
-            <div [ngStyle]="{ 'width': this.scale_width*3 + 'px'}"  class="text-center text-sm">
-                RZ2 to RZ3 change
-            </div>
-
 
         </div>
 
-        <!-- Row 1 - annotation -->
+        <!-- Row 1 - Text Annotation -->
         <div style="padding-left: 5vw;" class = "flex py-0.5">
 
             <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class= "flex items-end w-full text-sm">
@@ -251,25 +245,30 @@
                 
             </div>
 
-            <div [ngStyle]="{ 'padding-left': this.scale_width*0.5 + 'px'}">
+            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}">
             </div>
 
-            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  >
+            <div [ngStyle]="{ 'width': this.scale_width*3 + 'px'}"  class="text-center text-sm">
+                RZ2 to RZ3 change
+            </div>
+
+            <!-- <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  >
                 <svg class= "w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none" fill="grey">
                     <polygon points="0,30 2,30 2,40, 0,40"/>
                     <polygon points="0,29 100,29 100,31 0,31"/>
                     <polygon points="98,0 100,0 100,30, 98,30"/>
 
                 </svg>
-            </div>
+            </div> -->
         </div>
 
-        <!-- Row 2 - Arrows and annotations -->
+        <!-- Row 2 - Annotation line -->
         <div style="padding-left: 5vw;" class = "flex py-0.5 h-5">
 
             <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}" >
             </div>
 
+            <!-- Annotation line -->
             <div [ngStyle]="{ 'width': this.scale_width*0.5 + 'px'}" >
                 <svg class= "w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none" fill="grey">
                     <polygon points="0,0 8,0 8,20, 0,20"/>
@@ -279,31 +278,49 @@
                 </svg>
             </div>
 
-            <div [ngStyle]="{ 'padding-left': this.scale_width*0.5 + 'px'}" >
+            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}" >
+            </div>
+
+            <!-- Annotation line -->
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  >
+                <svg class= "w-full h-full" viewBox="0 0 100 10" preserveAspectRatio="none" fill="grey">
+                    <polygon points="0,5 2,5 2,10 0,10"/>
+                    <polygon points="0,4 100,4 100,6 0,6"/>
+                    <polygon points="98,0 100,0 100,5, 98,5"/>
+
+                </svg>
             </div>
             
-            <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
+            <!-- <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
                 <svg viewBox="0 0 100 20" preserveAspectRatio="none">
                     <polygon points="0,8 80,8 80,12 0,12" fill="white" />
                     <polygon points="75,0 100,10 75,20" fill="white" />
                 </svg>
                 
-            </div>
+            </div> -->
 
         </div>
 
-        <!-- Row 3 - Arrow -->
+        <!-- Row 3 - Arrows -->
         <div style="padding-left: 5vw;" class = "flex py-0.5">
 
             <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}">
             </div>
 
+            <!-- Arrow -->
             <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
                 <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <polygon points="0,8 80,8 80,12 0,12" fill="white" />
-                    <polygon points="75,0 100,10 75,20" fill="white" />
+                    <polygon points="5,8 80,8 80,12 5,12" fill="white" />
+                    <polygon points="72,0 95,10 72,20" fill="white" /> <!-- Add 5 buffer space either side and chang 75-> 72 -->
                 </svg>
-                
+            </div>
+
+            <!-- Arrow -->
+            <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
+                <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                    <polygon points="5,8 80,8 80,12 5,12" fill="white" />
+                    <polygon points="72,0 95,10 72,20" fill="white" />
+                </svg>
             </div>
 
         </div>
@@ -423,67 +440,11 @@
                 <i>
                     <u><a href="https://missingmiddlecbr.org.au/#faq" >Missing Middle Canberra</a></u> proposes to change all RZ1 zones to RZ2 and all RZ2 zones to RZ3. This would result in
                     modest increases in density, while legalising vast amounts of housing to be built across the city. Increasing supply
-                    of medium density housing is considered the <u><a href="https://grattan.edu.au/wp-content/uploads/2017/05/Slide1.jpg">most effective way</a></u> to increase housing affordability.
+                    of medium density housing is the <u><a href="https://grattan.edu.au/wp-content/uploads/2017/05/Slide1.jpg">most effective way</a></u> to increase housing affordability.
                 </i>
             </h1>
         </div>
 
     </div>
 
-    <div class="flex py-60">
-
-        <!-- Split each section into 3, one for the image and and text, one for the scale, and one for the 
-            corresponding density values -->
-
-        <div class="w-3/4">
-            <div class="flex p-10">
-                <div>
-                    <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
-                </div>
-    
-                <div class="p-10 border-r h-full">
-                    Montreal <em> (Le Plateau Mont Royal)</em> : Population Density ~12,000 people per square km
-                </div>
-            </div>
-
-            <div class="flex p-10">
-                <div>
-                    <img src="assets/images/Montreal.JPG" alt="Montreal Image" class="mr-4">
-                </div>
-    
-                <div class="p-10 border-r h-full">
-                    Montreal2 <em> (Le Plateau Mont Royal)</em> : Population Density ~12,000 people per square km
-                </div>
-            </div>
-        </div>
-        
-        
-
-        <div class="w-4 px-2" style="background: linear-gradient(to bottom, #e74c3c, #3498db);"></div>
-
-        <div class=" bg-blue-950 w-1/4 p-10 border-l-2 border-white">
-            12,000 people / km <sup>2</sup>
-        </div>
-
-    </div>
-
-    <p>Visualising Density</p>
-    
-    <div class="flex p-4">
-
-
-        <img src="assets/images/Boston.JPG" alt="Boston Image" class="w-2/3 mr-4">
-
-        <div>
-            Boston <em> (Back Bay / Beacon Hill)</em> : Population Density ~18,000 people per square km
-        </div>
-
-
-    </div>
-
-    <!-- Adding AOS (Animate on Scroll library) -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
 </body>
