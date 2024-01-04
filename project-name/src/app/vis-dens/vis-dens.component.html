@@ -217,10 +217,7 @@
 
 
         <div>
-            <svg class="absolute top-24 left-3/4 w-24 h-24">
-                <polygon points="2,2 22,11 2,22" fill="#e74c3c" />
-            </svg>
-
+            <!-- Scale bar ticks -->
             <svg class="absolute top-24 left-3/4" style="height: 900vh">
                 <ng-container *ngFor="let tick of generatePolygonData()">
                   <polygon [attr.points]="tick.points" [attr.fill]="tick.color"/>
@@ -465,11 +462,17 @@
                 New York
             </div>
             
-
         </div>
         
 
     </div>
+
+    <!-- <div class = "px-24">
+        <div style="padding-left: 5vw;" class = "flex py-0.5 h-10">
+            <div [ngStyle]="{ 'padding-left': 18*(this.scale_width) + 'px'}" class="border border-blue-400">
+            </div>
+        </div>
+    </div> -->
 
     <!-- Text div -->
     <div>

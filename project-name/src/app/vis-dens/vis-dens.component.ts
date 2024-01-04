@@ -60,7 +60,7 @@ export class VisDensComponent{
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   fadeState: string = 'fadeIn';
-  scrollPosition: string = 'top';
+  scrollPosition: string = 'Canberra';
   //sidebarHeight: number = 0;
   noScaleTicks: number = 18;
   colors: any[] = [];
@@ -165,6 +165,7 @@ export class VisDensComponent{
   }
 
   ngOnInit() {
+    this.reveal()
     window.addEventListener('scroll', this.reveal)
     this.windowWidth = window.innerWidth;
     this.scale_width = this.getScaleWidth(this.windowWidth)

@@ -15,6 +15,8 @@ import { MapComponent } from './map/map.component';
 import { VisDensComponent } from './vis-dens/vis-dens.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImgCaptionComponent } from './vis-dens/img-caption/img-caption.component';
+import { LightRailComponent } from './light-rail/light-rail.component';
+import { HonoursComponent } from './honours/honours.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ImgCaptionComponent } from './vis-dens/img-caption/img-caption.componen
     HomeComponent,
     MapComponent,
     VisDensComponent,
-    ImgCaptionComponent
+    ImgCaptionComponent,
+    LightRailComponent,
+    HonoursComponent
   ],
   imports: [
     HttpClientModule,

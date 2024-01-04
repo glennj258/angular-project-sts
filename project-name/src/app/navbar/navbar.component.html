@@ -18,6 +18,15 @@
         </li>
 
         <li class = "flex mx-2 w-28 h-10 justify-center items-center
+        border-b-2 hover:bg-opacity-0 hover:border-b-2 
+        {{ getCurrentURL() === getBaseURL() + '/light-rail'
+        ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
+        : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
+        routerLink="/light-rail">
+        <a>Light Rail</a>
+        </li>
+
+        <li class = "flex mx-2 w-28 h-10 justify-center items-center
           border-b-2 hover:bg-opacity-0 hover:border-b-2 
           {{ getCurrentURL() === getBaseURL() + '/item/16'
           ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
