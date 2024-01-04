@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<app-navbar></app-navbar>
+
+<body *ngIf="titleContentshown" class="bg-blue-950 mt-14">
+<!--replaces bg-blue-950-->
+
+
+
+
+<!--<p>item-details works!</p>-->
+<!--<h2>Details for Item {{ genreId }}</h2>-->
+
+<!--<div *ngIf="mainContentshown">-->
+<div>
+  <h2>Popular {{genreName}} Movies</h2>
+  <p>
+    {{dataString}}
+  </p>
+</div>
+
+<div class = "flex gap-4 text-center text-white bg-blue-950">
+
+  <ul class = "flex gap-4 flex-wrap  justify-center">
+    <li class = ""
+      *ngFor="let result of movieResults">
+<!--      {{ result.title }}-->
+      <a id = "MovieButton" class = "flex-wrap block shadow-md rounded-0 cursor-pointer
+        duration-300 ease-in-out bg-blue-500 hover:bg-blue-300
+        transform transition-transform hover:scale-110 border-4 border-gray-500 hover:border-electricBlue"
+         (click)="navigateToTitleDetails(result)">
+        <img src= "{{getPosterUrl(result.poster_path)}}"  alt="{{result.title}}" class="max-h-[200px]
+          " title="{{result.overview}}">
+      </a>
+
+<!--      {{result.id}}-->
+<!--      <a [routerLink]="['/title', result.id]">{{ result.title }}</a>-->
+      <!--      <a (click)="navigateToTitleDetails(item)"> <u>{{ item.name }}</u> </a>-->
+      <!--        <button (click)="showMyContainer=!showMyContainer"></button>-->
+      <!--        <div *ngIf="showMyContainer">-->
+      <!--          your code-->
+      <!--        </div>-->
+    </li>
+  </ul>
+</div>
+
+<!--<p>Data String: {{dataString}}</p>-->
+
+<!--Navigate back to main page-->
+
+
+</body>
+
+
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge " *ngIf="titleContentshown" class="bg-blue-950">-->
+<!--&lt;!&ndash;   *ngIf="mainContentshown"&ndash;&gt;-->
+<!--  <a class = "text-white" [routerLink]="['/home']"> Home </a>-->
+<!--  &lt;!&ndash; Image of location/map &ndash;&gt;-->
+<!--  &lt;!&ndash; replaced map with TMBD logo - don't know how to centre&ndash;&gt;-->
+<!--  <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" class="w3-image w3-center w3-greyscale-min" style="width:60%">-->
+<!--  &lt;!&ndash; *ngIf="mainContentshown">&ndash;&gt;-->
+
+<!--  <p class="w3-medium text-white"> <i>This product uses the TMDB API but is not endorsed or certified by TMDB</i>.</p>-->
+<!--  <p class="w3-medium text-white">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>-->
+<!--</footer>-->
+
+<router-outlet></router-outlet>
+
+</html>

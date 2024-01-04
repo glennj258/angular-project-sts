@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<p>title-details works!</p>-->
+<br>
+
+<app-navbar></app-navbar>
+
+<div class = "mt-14">
+
+<p>
+  Movie title: {{movieDetails.title}} <br>
+  Description:{{movieDetails.overview}}  <br>
+  Release date: {{movieDetails.release_date}} <br>
+<!--  Popularity: {{movieDetails.popularity}} <br>-->
+
+  Genres: {{getCommaSeparatedString(getNames(movieDetails.genres))}}
+  <br>
+
+  <img src="{{getMoviePosterUrl(movieDetails.poster_path)}}" class="w3-image w3-center w3-greyscale-min" style="width:10%">
+
+</p>
+  <pre>
+  {{ movieDetails | json }}
+  </pre>
+
+<!--Navigate back to main page-->
+<a [routerLink]="['/home']"> Home </a>
+
+<!--<p>-->
+<!--  Movie details:-->
+<!--  {{outputString}}-->
+<!--</p>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">-->
+<!--  &lt;!&ndash;   *ngIf="mainContentshown"&ndash;&gt;-->
+<!--  &lt;!&ndash; Image of location/map &ndash;&gt;-->
+<!--  &lt;!&ndash; replaced map with TMBD logo - don't know how to centre&ndash;&gt;-->
+<!--  <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" class="w3-image w3-center w3-greyscale-min" style="width:60%">-->
+<!--  &lt;!&ndash; *ngIf="mainContentshown">&ndash;&gt;-->
+
+<!--  <p class="w3-medium"> <i>This product uses the TMDB API but is not endorsed or certified by TMDB</i>.</p>-->
+<!--&lt;!&ndash;  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>&ndash;&gt;-->
+<!--</footer>-->
+
+</div>
+</html>

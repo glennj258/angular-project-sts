@@ -1,0 +1,361 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!DOCTYPE html>
+<html lang="en">
+<!--<title>W3.CSS Template</title>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"-->
+<!--      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="-->
+<!--      crossorigin=""/>-->
+<!--<style>-->
+<!--  body {font-family: "Lato", sans-serif}-->
+<!--  .mySlides {display: none}-->
+<!--</style>-->
+<body class="bg-slate-900">
+
+<!-- Navbar -->
+<!--<div class="w3-top" *ngIf="mainContentshown">-->
+<!--  <div class="w3-bar w3-black w3-card">-->
+<!--    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>-->
+<!--    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>-->
+<!--    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>-->
+<!--    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>-->
+<!--    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>-->
+<!--    <div class="w3-dropdown-hover w3-hide-small">-->
+<!--      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>-->
+<!--      <div class="w3-dropdown-content w3-bar-block w3-card-4">-->
+<!--        <a href="#" class="w3-bar-item w3-button">Merchandise</a>-->
+<!--        <a href="#" class="w3-bar-item w3-button">Extras</a>-->
+<!--        <a href="#" class="w3-bar-item w3-button">Media</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<!--<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">-->
+<!--  <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>-->
+<!--  <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>-->
+<!--  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>-->
+<!--  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>-->
+<!--</div>-->
+
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;" *ngIf="mainContentshown">
+
+  <!-- Automatic Slideshow Images -->
+<!--  <div class="mySlides w3-display-container w3-center">-->
+<!--    <img src="https://www.w3schools.com/w3images/la.jpg" style="width:100%">-->
+<!--    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">-->
+<!--      <h3>Los Angeles</h3>-->
+<!--      <p><b>We had the best time playing at Venice Beach!</b></p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="mySlides w3-display-container w3-center">-->
+<!--    <img src="https://www.w3schools.com/w3images/ny.jpg" style="width:100%">-->
+<!--    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">-->
+<!--      <h3>New York</h3>-->
+<!--      <p><b>The atmosphere in New York is lorem ipsum.</b></p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="mySlides w3-display-container w3-center">-->
+<!--    <img src="https://www.w3schools.com/w3images/chicago.jpg" style="width:100%">-->
+<!--    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">-->
+<!--      <h3>Chicago</h3>-->
+<!--      <p><b>Thank you, Chicago - A night we won't forget.</b></p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!-- The Band Section -->
+<!--  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">-->
+<!--    <h2 class="w3-wide">Mock IMDb</h2>-->
+<!--    <p class="w3-opacity"><i>Using the TMBD API to outline infomation about movies</i></p>-->
+
+<!--    &lt;!&ndash;    <p class="w3-justify">Data from API is {{dataString}}</p>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <p class="w3-justify">Genre-IDs dictionary is {{dataListString}}</p>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip&ndash;&gt;-->
+<!--    &lt;!&ndash;      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur&ndash;&gt;-->
+<!--    &lt;!&ndash;      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div class="w3-row w3-padding-32">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <div class="w3-third">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <p>Name</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <img src="https://www.w3schools.com/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">&ndash;&gt;-->
+<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <div class="w3-third">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <p>Name</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <img src="https://www.w3schools.com/w3images/bandmember.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">&ndash;&gt;-->
+<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <div class="w3-third">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <p>Name</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <img src="https://www.w3schools.com/w3images/bandmember.jpg" class="w3-round" alt="Random Name" style="width:60%">&ndash;&gt;-->
+<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
+
+  <!--  <div *ngIf="mainContentshown">-->
+  <!--    <h2>Movie Genres</h2>-->
+  <!--    <ul>-->
+  <!--      <li *ngFor="let genre of movieGenres">-->
+  <!--        {{ genre.id }} . {{ genre.name }}-->
+  <!--&lt;!&ndash;        <button (click)="showMyContainer=!showMyContainer"></button>&ndash;&gt;-->
+  <!--&lt;!&ndash;        <div *ngIf="showMyContainer">&ndash;&gt;-->
+  <!--&lt;!&ndash;          your code&ndash;&gt;-->
+  <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+  <!--      </li>-->
+  <!--    </ul>-->
+  <!--  </div>-->
+  <div>
+    <app-popular-media></app-popular-media>
+  </div>
+
+  <!--  routed list Movie Genres-->
+  <div class="bg-white">
+    <h1 class="text-blue-950 text-xl"> <strong> Movie Genres </strong></h1>
+    <ul class = "flex gap-4 flex-wrap items-center justify-center ">
+
+      <li class = "flex items-center justify-center" *ngFor="let item of listItems">
+        <!--            <a [routerLink]="['/item', item.id]">{{ item.name }}</a>-->
+        <a class="text-center text-white align-middle items-center justify-center w-40 h-40 pt-16 block shadow-md rounded-lg cursor-pointer
+            transition-colors duration-300 ease-in-out bg-blue-500 hover:bg-blue-300
+            transform transition-transform hover:scale-110"
+           (click)="navigateToItemDetails(item)"> <strong class = "align-middle text-white justify-center">{{ item.name }}</strong> </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div>
+    <app-map></app-map>
+  </div>
+
+  <!--  Hidden page/ dropdown like button-->
+  <!--  <button (click)="showMyContainer=!showMyContainer">Show/Hide</button>-->
+
+  <!--  <div *ngIf="showMyContainer">-->
+  <!--    your code-->
+  <!--  </div>-->
+
+  <!--  <a href="#hiddenPage" onclick="togglePage()">Click to Show Page</a>-->
+
+  <!--  <div id="hiddenPage" style="display: block;">-->
+  <!--    &lt;!&ndash; Content of the page that will be displayed &ndash;&gt;-->
+  <!--    <h1>This is the hidden page</h1>-->
+  <!--    <p>This content will only be visible when the link is clicked.</p>-->
+  <!--  </div>-->
+
+
+  <!--  &lt;!&ndash; The Tour Section &ndash;&gt;-->
+  <!--  <div class="w3-black" id="tour">-->
+  <!--    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">-->
+  <!--      <h2 class="w3-wide w3-center">TOUR DATES</h2>-->
+  <!--      <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>-->
+
+  <!--      <ul class="w3-ul w3-border w3-white w3-text-grey">-->
+  <!--        <li class="w3-padding">September <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>-->
+  <!--        <li class="w3-padding">October <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>-->
+  <!--        <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>-->
+  <!--      </ul>-->
+
+  <!--      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">-->
+  <!--        <div class="w3-third w3-margin-bottom">-->
+  <!--          <img src="https://www.w3schools.com/w3images/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">-->
+  <!--          <div class="w3-container w3-white">-->
+  <!--            <p><b>New York</b></p>-->
+  <!--            <p class="w3-opacity">Fri 27 Nov 2016</p>-->
+  <!--            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>-->
+  <!--            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="w3-third w3-margin-bottom">-->
+  <!--          <img src="https://www.w3schools.com/w3images/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">-->
+  <!--          <div class="w3-container w3-white">-->
+  <!--            <p><b>Paris</b></p>-->
+  <!--            <p class="w3-opacity">Sat 28 Nov 2016</p>-->
+  <!--            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>-->
+  <!--            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="w3-third w3-margin-bottom">-->
+  <!--          <img src="https://www.w3schools.com/w3images/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">-->
+  <!--          <div class="w3-container w3-white">-->
+  <!--            <p><b>San Francisco</b></p>-->
+  <!--            <p class="w3-opacity">Sun 29 Nov 2016</p>-->
+  <!--            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>-->
+  <!--            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <!-- Ticket Modal -->
+<!--  <div id="ticketModal" class="w3-modal">-->
+<!--    <div class="w3-modal-content w3-animate-top w3-card-4">-->
+<!--      <header class="w3-container w3-teal w3-center w3-padding-32">-->
+<!--            <span onclick="document.getElementById('ticketModal').style.display='none'"-->
+<!--                  class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>-->
+<!--        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>-->
+<!--      </header>-->
+<!--      <div class="w3-container">-->
+<!--        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>-->
+<!--        <input class="w3-input w3-border" type="text" placeholder="How many?">-->
+<!--        <p><label><i class="fa fa-user"></i> Send To</label></p>-->
+<!--        <input class="w3-input w3-border" type="text" placeholder="Enter email">-->
+<!--        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>-->
+<!--        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>-->
+<!--        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!--  &lt;!&ndash; The Contact Section &ndash;&gt;-->
+  <!--  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">-->
+  <!--    <h2 class="w3-wide w3-center">CONTACT</h2>-->
+  <!--    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>-->
+  <!--    <div class="w3-row w3-padding-32">-->
+  <!--      <div class="w3-col m6 w3-large w3-margin-bottom">-->
+  <!--        <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>-->
+  <!--        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>-->
+  <!--        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>-->
+  <!--      </div>-->
+  <!--      <div class="w3-col m6">-->
+  <!--        <form action="/action_page.php" target="_blank">-->
+  <!--          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">-->
+  <!--            <div class="w3-half">-->
+  <!--              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">-->
+  <!--            </div>-->
+  <!--            <div class="w3-half">-->
+  <!--              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">-->
+  <!--          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>-->
+  <!--        </form>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+<!--  <div>-->
+
+<!--  </div>-->
+<!--  <p class="text-center text-blue-700">-->
+<!--    Hi-->
+<!--  </p>-->
+
+  <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 40%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
+  <div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mock Cinemas - Angular Training" src="//www.arcgis.com/apps/Embed/index.html?webmap=5f5a72fb283d4a62b0dc3eb98d0c9a99&extent=148.9777,-35.2992,149.2017,-35.1977&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&disable_scroll=true&theme=dark"></iframe></div>
+
+  <p>
+    Leaflet map
+
+  </p>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <div id="map">
+    <a href="https://www.maptiler.com" style="width: 600px; height: 400px"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+  </div>
+  <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
+  <script>
+    const key = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ';
+    const map = L.map('map').setView([49.2125578, 16.62662018], 14); //starting position
+    L.tileLayer(`https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=${key}`,{ //style URL
+      tileSize: 512,
+      zoomOffset: -1,
+      minZoom: 1,
+      attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+      crossOrigin: true
+    }).addTo(map);
+  </script>
+  <!-- End Page Content -->
+</div>
+
+
+
+
+<!-- Footer -->
+<!--<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge" *ngIf="mainContentshown">-->
+
+<!--  &lt;!&ndash; Image of location/map &ndash;&gt;-->
+<!--  &lt;!&ndash; replaced map with TMBD logo - don't know how to centre&ndash;&gt;-->
+<!--  <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" class="w3-image w3-center w3-greyscale-min" style="width:60%">-->
+
+<!--  &lt;!&ndash;  <i class="fa fa-facebook-official w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <i class="fa fa-instagram w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <i class="fa fa-snapchat w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <i class="fa fa-pinterest-p w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <i class="fa fa-twitter w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;  <i class="fa fa-linkedin w3-hover-opacity"></i>&ndash;&gt;-->
+<!--  <p class="w3-medium"> <i>This product uses the TMDB API but is not endorsed or certified by TMDB</i>.</p>-->
+<!--  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>-->
+<!--</footer>-->
+
+
+
+<script>
+  // Automatic Slideshow - change image every 4 seconds
+  var myIndex = 0;
+  carousel();
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+  }
+
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  var modal = document.getElementById('ticketModal');
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function togglePage() {
+    var page = document.getElementById("hiddenPage");
+
+    // Toggle the display property of the hiddenPage div
+    if (page.style.display === "none") {
+      page.style.display = "block";
+    } else {
+      page.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
+
