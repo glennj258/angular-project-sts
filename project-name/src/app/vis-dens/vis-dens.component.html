@@ -35,7 +35,13 @@
                         </div>
                         
                         <div class="p-12 w-1/4">
-                            Canberra <em>(Ainslie)</em> : Population Density ~2,000 people per square km
+                            <p class="text-2xl"> Canberra </p>
+                            <p class="text-gray-400 text-lg"> <em>Ainslie</em> </p>
+
+                            <p class="p-1"></p>
+
+                            <p class="text-sm"> Population Density:</p>
+                            <p class="text-sm"> ~2,000 people / km <sup>2</sup></p>
                         </div>
                 </div>
 
@@ -199,7 +205,7 @@
 
                 <div class="h-20">
                     <p>
-                        <b><i>{{tick_text.text_no}} people / km <sup>2</sup></i></b>
+                        <b><i>{{tick_text.text_no/1000}},000 people / km <sup>2</sup></i></b>
                     </p>
 
                 </div>
@@ -239,17 +245,19 @@
         <div style="padding-left: 5vw;" class = "flex py-0.5">
 
             <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}" class= "flex items-end w-full text-sm">
-                <div>
+                <div class="flex text-center text-gray-200">
                     RZ1 to RZ2 change
                 </div>
                 
             </div>
 
-            <div [ngStyle]="{ 'padding-left': this.scale_width + 'px'}">
+            <div [ngStyle]="{ 'padding-left': this.scale_width*1.5 + 'px'}">
             </div>
 
-            <div [ngStyle]="{ 'width': this.scale_width*3 + 'px'}"  class="text-center text-sm">
-                RZ2 to RZ3 change
+            <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  class="flex items-end w-full text-sm text-center">
+                <div class="flex text-center text-gray-200">
+                    RZ2 to RZ3 change
+                </div>
             </div>
 
             <!-- <div [ngStyle]="{ 'width': this.scale_width*2 + 'px'}"  >
@@ -309,17 +317,17 @@
 
             <!-- Arrow -->
             <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
-                <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <polygon points="5,8 80,8 80,12 5,12" fill="white" />
-                    <polygon points="72,0 95,10 72,20" fill="white" /> <!-- Add 5 buffer space either side and chang 75-> 72 -->
+                <svg viewBox="0 0 100 20" preserveAspectRatio="none" fill="#FF9998"> <!-- light reds from list: #dd5045, #d3544e -->
+                    <polygon points="5,8 80,8 80,12 5,12"/>
+                    <polygon points="72,0 95,10 72,20"/> <!-- Add 5 buffer space either side and chang 75-> 72 -->
                 </svg>
             </div>
 
             <!-- Arrow -->
             <div [ngStyle]="{ 'width': this.scale_width + 'px'}" class= " w-full text-sm">
-                <svg viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <polygon points="5,8 80,8 80,12 5,12" fill="white" />
-                    <polygon points="72,0 95,10 72,20" fill="white" />
+                <svg viewBox="0 0 100 20" preserveAspectRatio="none" fill="#ffbbba" > <!-- example light reds: #ffcccb, #FF9998 -->
+                    <polygon points="5,8 80,8 80,12 5,12"/>
+                    <polygon points="72,0 95,10 72,20"/>
                 </svg>
             </div>
 
@@ -435,7 +443,7 @@
 
     <!-- Text div -->
     <div>
-        <div class="px-24 py-20">
+        <div class="px-24 pb-20">
             <h1 class="text-center text-lg">
                 <i>
                     <u><a href="https://missingmiddlecbr.org.au/#faq" >Missing Middle Canberra</a></u> proposes to change all RZ1 zones to RZ2 and all RZ2 zones to RZ3. This would result in
