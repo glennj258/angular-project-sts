@@ -4,11 +4,14 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import CSVLayer from '@arcgis/core/layers/CSVLayer';
 import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer.js";
+import ClassBreaksRenderer from "@arcgis/core/renderers/ClassBreaksRenderer"
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol';
 import PopupTemplate from '@arcgis/core/PopupTemplate';
 import Graphic from '@arcgis/core/Graphic';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol'
+
+import { interpolateMagma } from 'd3-scale-chromatic';
 
 
 @Component({
@@ -29,6 +32,16 @@ export class AccessMapComponent implements OnInit {
     featureLayer:FeatureLayer = new FeatureLayer({
       url: 'https://services6.arcgis.com/0GC4ZQT1X11NdF4C/arcgis/rest/services/MB21_CQ_pop_msym/FeatureServer'
     });
+
+    // establish the visualisation properties
+    no_mag_colours = 72 // set the amount of class breaks to use in the colour classification
+
+    
+    max_popdens = 36000 // sets for colour scheme, any values past this will be the same
+    min_popdens = 0
+
+    outline_properties = {color: [111, 111, 111, 0.7], width: 0.3}
+
 
   ngOnInit(): void {
     
@@ -69,8 +82,16 @@ export class AccessMapComponent implements OnInit {
 
 
 
-    const fillSymbol = new SimpleFillSymbol({
+    const symbolRed = new SimpleFillSymbol({
       color: [255, 0, 0, 0.5], // Red fill color with 50% transparency
+      outline: {
+        color: [211, 211, 211, 0.7],
+        width: 0.3
+      }
+    });
+
+    const symbolBlue = new SimpleFillSymbol({
+      color: [0, 0, 255, 0.5],
       outline: {
         color: [211, 211, 211, 0.7],
         width: 0.3
@@ -79,17 +100,37 @@ export class AccessMapComponent implements OnInit {
 
       // Create a SimpleRenderer using the fill symbol
     const renderer = new SimpleRenderer({
-      symbol: fillSymbol
+      symbol: symbolRed
+    });
+
+    const cts_renderer = new ClassBreaksRenderer({
+      field: 'Population_density', // Replace with the actual attribute field name
+      defaultSymbol: new SimpleFillSymbol({
+        color: [169, 169, 169, 0.5], // Default color for features without specified values
+        outline: {
+          color: [0, 0, 0],
+          width: 1
+        }
+      }),
+      classBreakInfos: getClassBreaks(this.no_mag_colours, this.min_popdens, this.max_popdens, this.outline_properties, 1)
+      // [
+      //   { minValue: 0, maxValue: 2000, symbol: symbolRed },
+      //   { minValue: 2000, maxValue: Infinity, symbol: symbolBlue }
+      //   // Add more class break infos for other ranges and symbols
+      // ]
+
     });
 
   // Set the renderer to the feature layer
-    this.featureLayer.renderer = renderer;
+    this.featureLayer.renderer = cts_renderer;
 
     // add the feature layer to the map
     view.map.add(this.featureLayer)
 
     // add the csv layer to the map
     view.map.add(this.csvLayer);
+
+    getMagmaColours(this.no_mag_colours)
 
 
     // Read CSV and render polygons
@@ -162,6 +203,84 @@ export class AccessMapComponent implements OnInit {
     }
     }
 
+
 }
 
+interface GraphicStyle {
+  color: number[];
+  width: number;
+}
 
+function getClassBreaks(no_colours: number, value_min:number, value_max:number, outline_properties: GraphicStyle, 
+  transparency:number = 1){
+  const magma_colours = getMagmaColours(no_colours, transparency).reverse()
+
+  // intialise the class break info list
+  const class_break_infos = []
+
+  const value_breaks = (value_max - value_min)/no_colours
+
+  for (let i = 0; i < no_colours; i++) {
+
+    //const colour =  magma_colours[i]
+    var colour =  hexToRGB(interpolateMagma(1-i/no_colours), transparency) // reverse the magma colour
+
+    // make the first colour semi-transparent
+    // console.log("ivalue = ", i)
+    // if (i === 0){
+    //   colour =  hexToRGB(interpolateMagma(1-i/no_colours), 0.5) // reverse the magma colour
+    //   console.log("i = 0  found")
+    // }
+
+    const fill_symbol = get_fillSymbol(colour, outline_properties)
+
+    const this_value_min = value_min
+    var this_value_max = value_min + (i+1)*value_breaks
+
+    // replace the last value max with infinity
+    if (i === no_colours - 1){
+      this_value_max = Infinity
+    }
+
+    const class_break_info = {minValue: this_value_min, maxValue: this_value_max, symbol: fill_symbol}
+
+    class_break_infos.push(class_break_info);
+  }
+
+  return class_break_infos
+
+}
+
+function get_fillSymbol(colour:number[], outline_properties: GraphicStyle){
+  const symbol = new SimpleFillSymbol({
+    color: colour,
+    outline: outline_properties});
+  return symbol
+}
+
+function getMagmaColours(no_colours: number, transparency:number = 1) {
+
+  //const startRGB = rgbStringToArray(startColor)// hexToRGB(startColor);
+  //const endRGB = rgbStringToArray(endColor)// hexToRGB(endColor);
+
+  //console.log("RGB Start, end", startRGB, endRGB)
+  const mag_colors = [];
+
+  for (let i = 0; i < no_colours; i++) {
+
+    const interpolatedColor = interpolateMagma(i/no_colours)
+    const rgbColor =  hexToRGB(interpolatedColor, transparency);
+    mag_colors.push(rgbColor);
+    console.log("Interpolated colour, rgb colour", interpolatedColor, rgbColor)
+  }
+
+  return mag_colors;
+}
+
+function hexToRGB(hex:string, transparency:number = 1) {
+  const bigint = parseInt(hex.slice(1), 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return [r, g, b, transparency];
+}
