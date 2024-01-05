@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@arcgis/core": "^4.28.10",
+    "@types/arcgis-js-api": "^4.28.0",
+    "arcgis-js-api": "^4.28.10",
     "leaflet": "^1.9.4",
     "node-fetch": "^2.7.0",
     "react-router-dom": "^6.18.0",
