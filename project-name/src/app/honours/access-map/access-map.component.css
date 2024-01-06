@@ -1,0 +1,11 @@
+#zoom-buttons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
+.esri-button {
+    margin-bottom: 5px;
+}
+

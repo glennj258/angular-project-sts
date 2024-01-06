@@ -10,6 +10,9 @@ import PopupTemplate from '@arcgis/core/PopupTemplate';
 import Graphic from '@arcgis/core/Graphic';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol'
+import Zoom from '@arcgis/core/widgets/Zoom'
+import Attribution from '@arcgis/core/widgets/Attribution'
+import Home from '@arcgis/core/widgets/Home'
 
 import { interpolateMagma } from 'd3-scale-chromatic';
 
@@ -56,7 +59,10 @@ export class AccessMapComponent implements OnInit {
       container: 'mapView',
       map: map,
       center: [149.105, -35.327], // Coordinates for Los Angeles
-      zoom: 10
+      zoom: 10,
+      ui: {
+        components: ["zoom", "attribution"]  // Include zoom and attribution
+      }
     });
 
     // Define a popup template
@@ -76,6 +82,18 @@ export class AccessMapComponent implements OnInit {
         }
       })
     });
+
+      // Add zoom widget
+      // var zoomWidget = new Zoom({view: view});
+      // view.ui.add(zoomWidget, "top-left");
+
+      // Add a Home widget
+      var homeWidget = new Home({view: view});
+      view.ui.add(homeWidget, "top-left");
+
+    // Add Attribution widget to display "Powered by Esri" - doesn't work
+    var attributionWidget = new Attribution({view: view});
+    view.ui.add(attributionWidget, "bottom-right");
 
     // add a popup template to the csv layer
     this.csvLayer.popupTemplate = popupTemplate;
@@ -271,7 +289,7 @@ function getMagmaColours(no_colours: number, transparency:number = 1) {
     const interpolatedColor = interpolateMagma(i/no_colours)
     const rgbColor =  hexToRGB(interpolatedColor, transparency);
     mag_colors.push(rgbColor);
-    console.log("Interpolated colour, rgb colour", interpolatedColor, rgbColor)
+    //console.log("Interpolated colour, rgb colour", interpolatedColor, rgbColor)
   }
 
   return mag_colors;
