@@ -1,3 +1,4 @@
+/* does nothing */
 #zoom-buttons {
     position: absolute;
     top: 10px;
@@ -5,7 +6,15 @@
     z-index: 999;
 }
 
+/* does nothing */
 .esri-button {
     margin-bottom: 5px;
 }
 
+/* does nothing */
+.custom-popup {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}

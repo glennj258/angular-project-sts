@@ -70,6 +70,28 @@ export class AccessMapComponent implements OnInit {
       title: "{Name}" // Use field names enclosed in curly braces as placeholders
     });
 
+    const popup_MB21 = new PopupTemplate({
+      title: this.getName(),
+      content: [{
+        type: "fields",
+        fieldInfos: [
+          {
+            fieldName: "Person",
+            label: "Population",
+            visible: true
+          },
+          {
+            fieldName: "Population_density",
+            label: "Population Density",
+            visible: true
+          }
+      ]
+    }]
+      // "Population: {Person} <br> Population Density {Population_density}"
+    })
+
+    
+
     
     // add a renderer to the csv layer
     this.csvLayer.renderer = new SimpleRenderer({
@@ -141,6 +163,8 @@ export class AccessMapComponent implements OnInit {
 
   // Set the renderer to the feature layer
     this.featureLayer.renderer = cts_renderer;
+
+    this.featureLayer.popupTemplate = popup_MB21;
 
     // add the feature layer to the map
     view.map.add(this.featureLayer)
@@ -219,6 +243,21 @@ export class AccessMapComponent implements OnInit {
         })
       });
     }
+    }
+
+
+    getName(){
+      return "{SA2_NAME21}"
+    }
+
+    pop_dens_popup_content(){
+      var pop_dens_content = [{
+        type: "text",
+        text: "<div style='background-color: #f8f8f8; padding: 10px; text-align: center;'>Population: {Person} <br> Population Density: {Population_density}</div>"
+          }]
+      console.log("{Person}")
+      return pop_dens_content
+
     }
 
 
