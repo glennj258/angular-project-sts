@@ -84,7 +84,7 @@ export class AccessMapComponent implements OnInit {
             visible: true
           },
           {
-            fieldName: "Population_density",
+            fieldName: "popdens21_labels",
             label: "Population Density",
             visible: true
           }
@@ -273,14 +273,19 @@ export class AccessMapComponent implements OnInit {
       this.number = newData;
     }
 
+    updateFeatureRenderer(newData: any) {
+      this.featureLayer.renderer = newData
+    }
+
     getName(){
       return "{SA2_NAME21}"
     }
 
+    // not used anymore
     pop_dens_popup_content(){
       var pop_dens_content = [{
         type: "text",
-        text: "<div style='background-color: #f8f8f8; padding: 10px; text-align: center;'>Population: {Person} <br> Population Density: {Population_density}</div>"
+        text: "<div style='background-color: #f8f8f8; padding: 10px; text-align: center;'>Population: {Person} <br> Population Density: {popdens21_labels}</div>"
           }]
       console.log("{Person}")
       return pop_dens_content

@@ -41,8 +41,9 @@
         </div>
 
 
-        <app-selector-sidebar [csvRenderer]="csvLayer.renderer" [addition] = number 
-        (updateCSVRenderer)="updateCSVRenderer($event)" (updateNumber)="updateNumber($event)"></app-selector-sidebar>
+        <app-selector-sidebar [csvRenderer]="csvLayer.renderer" [addition] = number  [featureRenderer]="featureLayer.renderer"
+        (updateCSVRenderer)="updateCSVRenderer($event)" (updateNumber)="updateNumber($event)"
+        (outputFeatureRenderer)="updateFeatureRenderer($event)"></app-selector-sidebar>
     </div>
 </div>
 
