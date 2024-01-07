@@ -45,6 +45,8 @@ export class AccessMapComponent implements OnInit {
 
     outline_properties = {color: [111, 111, 111, 0.7], width: 0.3}
 
+    number: number = 0;
+
 
   ngOnInit(): void {
     
@@ -245,6 +247,13 @@ export class AccessMapComponent implements OnInit {
     }
     }
 
+    updateCSVRenderer(newData: any) {
+      this.csvLayer.renderer = newData;
+    }
+
+    updateNumber(newData: any) {
+      this.number = newData;
+    }
 
     getName(){
       return "{SA2_NAME21}"
@@ -259,6 +268,7 @@ export class AccessMapComponent implements OnInit {
       return pop_dens_content
 
     }
+
 
 
 }

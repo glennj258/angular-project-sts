@@ -18,6 +18,7 @@ import { ImgCaptionComponent } from './vis-dens/img-caption/img-caption.componen
 import { LightRailComponent } from './light-rail/light-rail.component';
 import { HonoursComponent } from './honours/honours.component';
 import { AccessMapComponent } from './honours/access-map/access-map.component';
+import { SelectorSidebarComponent } from './honours/selector-sidebar/selector-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AccessMapComponent } from './honours/access-map/access-map.component';
     ImgCaptionComponent,
     LightRailComponent,
     HonoursComponent,
-    AccessMapComponent
+    AccessMapComponent,
+    SelectorSidebarComponent
   ],
   imports: [
     HttpClientModule,

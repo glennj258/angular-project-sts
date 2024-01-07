@@ -20,5 +20,13 @@
 <div id="mapView" style="height: 800px; width: 60%;">
 </div>
 
+<div>
+    <p>
+        {{number}}
+    </p>
+</div>
 
+
+<app-selector-sidebar [csvRenderer]="csvLayer.renderer" [addition] = number 
+(updateCSVRenderer)="updateCSVRenderer($event)" (updateNumber)="updateNumber($event)"></app-selector-sidebar>
 
