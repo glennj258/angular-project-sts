@@ -33,8 +33,6 @@ export class SelectorSidebarComponent implements OnInit{
   }
 
   changeLayerColour(colour: string): void {
-
-    
     // Check if the layer already has a renderer
     if (this.csvRenderer) {
       // Modify the existing renderer to a heatmap renderer
