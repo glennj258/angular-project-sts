@@ -64,6 +64,17 @@ export class SelectorSidebarComponent implements OnInit{
   }
   currentMode = "walk"
 
+  pops = ["population_density", "population_density_16", "ds_md_inis_dev_pop_dens", "ds_tod_infill_pop_dens", "ds_greenfield_pop_dens",   "ds_equal_dev_pop_dens"]
+  pop_labels: { [key: string]: string } = {
+    "population_density": "2021 Census",
+    "population_density_16": "2016 Census", 
+    "ds_greenfield_pop_dens": "Greenfield",
+    "ds_tod_infill_pop_dens": "Transit-Oriented", 
+    "ds_md_inis_dev_pop_dens": "Medium-density", 
+    "ds_equal_dev_pop_dens":"Equal Development"
+  }
+  currentPop = "popdens21_labels"
+
   ngOnInit(): void {
     
   }
@@ -78,6 +89,15 @@ export class SelectorSidebarComponent implements OnInit{
         Button.click();
     }
 }
+
+  // Change the field displayed based on a click
+  selectPop(pop:string){
+    // hide the dropdown after selection
+    var Button = document.getElementById('dropdownPop');
+    if (Button) {Button.click();}
+
+    this.changeFieldSymbology(pop,'magma')
+  }
 
   // Change the field displayed based on a click
   selectDevScenario(DS:string) {
@@ -178,7 +198,7 @@ export class SelectorSidebarComponent implements OnInit{
     }
 
     // polygon layer field symbology
-    changeFieldSymbology(field:string): void {
+    changeFieldSymbology(field:string, colour_scheme = "greens"): void {
 
       // establish the sumbology start and end values
       const min_field = this.get_min_max_value(field)[0]
@@ -187,9 +207,9 @@ export class SelectorSidebarComponent implements OnInit{
       const field_renderer = new ClassBreaksRenderer({
         field: field, // Replace with the actual attribute field name
         defaultSymbol: new SimpleFillSymbol({
-          color: [169, 169, 169, 0.5], // Default color for features without specified values
+          color: this.getZeroColour(colour_scheme), // Default color for features without specified values
           outline: this.outline_properties}),
-        classBreakInfos: this.getClassBreaks(this.no_mag_colours, min_field, max_field, this.outline_properties, 1)
+        classBreakInfos: this.getClassBreaks(this.no_mag_colours, min_field, max_field, this.outline_properties, 1, colour_scheme)
       });
   
       this.featureRenderer = field_renderer;
@@ -203,7 +223,7 @@ export class SelectorSidebarComponent implements OnInit{
       const default_min_max_field = [0,1]
       var min_max_field = default_min_max_field
 
-      if (field === "Population_density"){
+      if (this.pops.includes(field)){
         min_max_field = [0,36000]
       }
       else if (field.split('_')[field.split('_').length - 1] === "access"){
@@ -237,10 +257,17 @@ export class SelectorSidebarComponent implements OnInit{
     }
 
     getClassBreaks(no_colours: number, value_min:number, value_max:number, outline_properties: GraphicStyle, 
-      transparency:number = 1){
+      transparency:number = 1, colour_scheme:string = "green"){
+
       
-      const magma_colours = this.getMagmaColours(no_colours, transparency).reverse()
-      const green_colours = this.getGreensColours(no_colours, transparency)
+      // get the appropriate colour scheme
+      var colours = this.getGreensColours(no_colours, transparency)
+      if (colour_scheme === "green"){
+        colours = this.getGreensColours(no_colours, transparency)
+      } else if (colour_scheme === "magma"){
+        colours = this.getMagmaColours(no_colours, transparency).reverse()
+      }
+      
     
       // intialise the class break info list
       const class_break_infos = []
@@ -251,7 +278,7 @@ export class SelectorSidebarComponent implements OnInit{
     
         //var colour =  magma_colours[i]
         //var colour =  hexToRGB(interpolateMagma(1-i/no_colours), transparency) // reverse the magma colour
-        var colour = green_colours[i]
+        var colour = colours[i]
 
         const fill_symbol = new SimpleFillSymbol({color: colour, outline: outline_properties});
     
@@ -299,6 +326,18 @@ export class SelectorSidebarComponent implements OnInit{
       return mag_colors;
 
 
+  }
+
+  getZeroColour(colour_scheme:string){
+
+    var zero_colour = [169, 169, 169, 0.5] // Default color for features without specified values
+
+    if (colour_scheme === "greens"){
+      zero_colour = rgbStringToArray(interpolateGreens(0))
+    } else if (colour_scheme === "magma"){
+      zero_colour = hexToRGB(interpolateMagma((this.no_mag_colours-1)/this.no_mag_colours))
+    }
+    return zero_colour
   }
 }
 
