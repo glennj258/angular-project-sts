@@ -37,6 +37,33 @@ export class SelectorSidebarComponent implements OnInit{
   current_field = "population_density"
   access_fields = ["walk_gc_md_inis_access"]
 
+  devScenarios = ["actual", "md_inis", "greenfield", "tod_infill", "equal_dev"]
+  devScenarios_labels: { [key: string]: string } = {
+    "actual": "Actual 2021",
+    "md_inis": "Medium-density", 
+    "greenfield": "Greenfield", 
+    "tod_infill": "Transit-Oriented", 
+    "equal_dev": "Equal"
+  };
+  currentDS = "actual"
+
+  services = ["gc", "lc", "tc", "schools", "empl"]
+  services_labels: { [key: string]: string } = {
+    "gc": "Group Centres", 
+    "lc": "Local Centres", 
+    "tc": "Town Centres", 
+    "schools": "Schools", 
+    "empl": "Employment"}
+  currentService = "gc"
+
+  modes = ["walk", "cycle", "pt"]
+  modes_labels: { [key: string]: string } = {
+    "walk":"Walking", 
+    "cycle": "Cycling", 
+    "pt": "Public Transport"
+  }
+  currentMode = "walk"
+
   ngOnInit(): void {
     
   }
@@ -54,30 +81,71 @@ export class SelectorSidebarComponent implements OnInit{
 
   // Change the field displayed based on a click
   selectDevScenario(DS:string) {
+    console.log("Previous field", this.current_field)
+
+    this.currentDS = DS
+    this.current_field = this.getAccessFieldName(this.currentMode, this.currentService, DS)
+
+    console.log("Updated Field:", this.current_field)
     
-    const split_field = this.current_field.split('_')
-
-    if (split_field[split_field.length - 1] !== "access"){
-      console.log("Previous field", this.current_field)
-      this.current_field = "walk_gc_"+ DS +"_access" // change to a default DS
-      console.log("Updated Field:", this.current_field)
-
-    } else {
-      // change only the development scenario component
-      const new_field = split_field[0] + "_" + split_field[1] + "_" + DS + "_access"
-      console.log("Previous field", this.current_field)
-      this.current_field = new_field
-      console.log("Updated Field:", this.current_field)
-    }
-
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownDevScenarios');
-    if (Button) {
-        Button.click();
-    }
+    if (Button) {Button.click();}
 
     this.changeFieldSymbology(this.current_field)
 }
+
+  // Change the field displayed based on a click
+  selectService(service:string) {
+    console.log("Previous field", this.current_field)
+
+    this.currentService = service
+    this.current_field = this.getAccessFieldName(this.currentMode, service, this.currentDS)
+
+    console.log("Updated Field:", this.current_field)
+    
+    // hide the dropdown after selection
+    var Button = document.getElementById('dropdownServices');
+    if (Button) {Button.click();}
+
+    this.changeFieldSymbology(this.current_field)
+  }
+
+  // Change the field displayed based on a click
+  selectMode(mode:string) {
+    console.log("Previous field", this.current_field)
+
+    this.currentMode = mode
+    this.current_field = this.getAccessFieldName(mode, this.currentService, this.currentDS)
+
+    console.log("Updated Field:", this.current_field)
+    
+    // hide the dropdown after selection
+    var Button = document.getElementById('dropdownModes');
+    if (Button) {Button.click();}
+
+    this.changeFieldSymbology(this.current_field)
+  }
+
+  getAccessFieldName(mode:string, service:string, DS:string){
+    // The development scenario must be input with the suffix "_access" for this code to work
+
+    // gets the field name corresponding to the input data
+
+    // employment and town centre service fields do not change between scenarios, and there is no data for them,
+    // so we need to use the original datasets for them
+    if ((service === "empl") || (service === "tc")){
+      var field_name = [mode, service, "access"].join('_')
+    } else {
+      // all other fields merge together as normal, and treat the switch from tc/empl to another service case
+      if (DS === ""){
+        DS = this.currentDS
+      }
+      var field_name = [mode, service, DS, "access"].join('_')
+    }
+
+    return field_name
+  }
 
   changeLayerColour(colour: string): void {
     // Check if the layer already has a renderer
@@ -111,6 +179,7 @@ export class SelectorSidebarComponent implements OnInit{
 
     // polygon layer field symbology
     changeFieldSymbology(field:string): void {
+
       // establish the sumbology start and end values
       const min_field = this.get_min_max_value(field)[0]
       const max_field = this.get_min_max_value(field)[1]
@@ -131,15 +200,38 @@ export class SelectorSidebarComponent implements OnInit{
 
 
     get_min_max_value(field:string){
-      var min_max_field = [0,36000]
+      const default_min_max_field = [0,1]
+      var min_max_field = default_min_max_field
+
       if (field === "Population_density"){
         min_max_field = [0,36000]
       }
-      else if (field === "Walk_gc_md_inis_Access" || field === "Walk_gc_actual_Access"){
-        min_max_field = [0, 1.35]
+      else if (field.split('_')[field.split('_').length - 1] === "access"){
+        
+        const service = this.currentService
+
+        // establish a group centre common symbology
+        if (service === "gc"){
+          min_max_field = [0, 1.35]
+        }
+        else if (service === "lc"){
+          min_max_field = [0, 2]
+        }
+        else if (service === "tc"){
+          min_max_field = [0, 1]
+        }
+        else if (service === "schools"){
+          min_max_field = [0, 4]
+        }
+        else if (service === "empl"){
+          min_max_field = [0, 36000]
+        }
+        else{
+          min_max_field = default_min_max_field
+        }
       }
       else {
-        min_max_field = [0,1]
+        min_max_field = default_min_max_field
       }
       return min_max_field
     }
