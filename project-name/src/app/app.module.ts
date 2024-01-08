@@ -19,6 +19,7 @@ import { LightRailComponent } from './light-rail/light-rail.component';
 import { HonoursComponent } from './honours/honours.component';
 import { AccessMapComponent } from './honours/access-map/access-map.component';
 import { SelectorSidebarComponent } from './honours/selector-sidebar/selector-sidebar.component';
+import { UrbanistContentComponent } from './urbanist-content/urbanist-content.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SelectorSidebarComponent } from './honours/selector-sidebar/selector-si
     LightRailComponent,
     HonoursComponent,
     AccessMapComponent,
-    SelectorSidebarComponent
+    SelectorSidebarComponent,
+    UrbanistContentComponent
   ],
   imports: [
     HttpClientModule,
