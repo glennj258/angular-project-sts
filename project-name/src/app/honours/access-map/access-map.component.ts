@@ -318,9 +318,9 @@ interface GraphicStyle {
 function getClassBreaks(no_colours: number, value_min:number, value_max:number, outline_properties: GraphicStyle, 
   transparency:number = 1){
   const magma_colours = getMagmaColours(no_colours, transparency).reverse()
-  const green_colours = getGreensColours(no_colours, transparency)
+  //const green_colours = getGreensColours(no_colours, transparency)
   //generateGreenSpectrumRGB(no_colours, 120, 20)
-  console.log(green_colours)
+  console.log(magma_colours)
 
   // intialise the class break info list
   const class_break_infos = []
@@ -331,7 +331,7 @@ function getClassBreaks(no_colours: number, value_min:number, value_max:number, 
 
     //var colour =  magma_colours[i]
     //var colour =  hexToRGB(interpolateMagma(1-i/no_colours), transparency) // reverse the magma colour
-    var colour = green_colours[i]
+    var colour = magma_colours[i]
 
     // make the first colour semi-transparent
     // console.log("ivalue = ", i)

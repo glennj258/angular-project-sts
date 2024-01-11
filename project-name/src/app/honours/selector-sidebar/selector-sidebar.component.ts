@@ -73,7 +73,7 @@ export class SelectorSidebarComponent implements OnInit{
     "ds_md_inis_dev_pop_dens": "Medium-density", 
     "ds_equal_dev_pop_dens":"Equal Development"
   }
-  currentPop = "popdens21_labels"
+  currentPop = "population_density"
 
   ngOnInit(): void {
     
@@ -96,6 +96,7 @@ export class SelectorSidebarComponent implements OnInit{
     var Button = document.getElementById('dropdownPop');
     if (Button) {Button.click();}
 
+    this.currentPop = pop
     this.changeFieldSymbology(pop,'magma')
   }
 
