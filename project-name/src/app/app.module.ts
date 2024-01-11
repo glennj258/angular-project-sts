@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { UrbanistContentComponent } from './urbanist-content/urbanist-content.co
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule, 
     BrowserAnimationsModule
   ],

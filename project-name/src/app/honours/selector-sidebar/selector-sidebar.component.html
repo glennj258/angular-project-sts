@@ -43,7 +43,7 @@
 </div>
 
     <label for="check" class="relative inline-flex items-center cursor-pointer">
-        <input id = "check" type="checkbox" value="" class="sr-only peer">
+        <input id = "check" type="checkbox" [(ngModel)]="vis_pop" (change)="onCheckboxChange()" value="" class="sr-only peer">
 
         <div class="w-11 h-6 bg-orange-600 peer-focus:outline-none 
             peer-focus:ring-4 peer-focus:ring-green-900 dark:peer-focus:ring-green-900 rounded-full 

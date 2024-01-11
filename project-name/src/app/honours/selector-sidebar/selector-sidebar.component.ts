@@ -11,6 +11,7 @@ import Graphic from '@arcgis/core/Graphic';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol'
 import 'flowbite';
+import { FormsModule } from '@angular/forms';
 
 
 import { interpolateMagma, interpolateGreens} from 'd3-scale-chromatic';
@@ -33,9 +34,6 @@ export class SelectorSidebarComponent implements OnInit{
   // general symbology details
   outline_properties = {color: [111, 111, 111, 0.7], width: 0.3}
   no_mag_colours = 72 // high to give continous effect
-
-  current_field = "population_density"
-  access_fields = ["walk_gc_md_inis_access"]
 
   devScenarios = ["actual", "md_inis", "greenfield", "tod_infill", "equal_dev"]
   devScenarios_labels: { [key: string]: string } = {
@@ -64,6 +62,9 @@ export class SelectorSidebarComponent implements OnInit{
   }
   currentMode = "walk"
 
+  current_field = "walk_gc_actual_access" // set default initial current field
+  access_fields = ["walk_gc_md_inis_access"]
+
   pops = ["population_density", "population_density_16", "ds_md_inis_dev_pop_dens", "ds_tod_infill_pop_dens", "ds_greenfield_pop_dens",   "ds_equal_dev_pop_dens"]
   pop_labels: { [key: string]: string } = {
     "population_density": "2021 Census",
@@ -74,6 +75,11 @@ export class SelectorSidebarComponent implements OnInit{
     "ds_equal_dev_pop_dens":"Equal Development"
   }
   currentPop = "population_density"
+
+
+
+  vis_selection: string = "pop";
+  vis_pop: boolean = true
 
   ngOnInit(): void {
     
@@ -89,6 +95,30 @@ export class SelectorSidebarComponent implements OnInit{
         Button.click();
     }
 }
+
+  onCheckboxChange() {
+    console.log(this.vis_pop)
+
+    
+    if (this.vis_pop === true){
+      // switch the visualised field to tha access field
+      this.vis_pop = false
+      this.vis_selection = "access"
+
+      this.changeFieldSymbology(this.current_field)
+
+    
+    } else {
+      // switch the visualised field to the population field
+
+      this.vis_selection = "pop" // adding a reset to pop
+      this.changeFieldSymbology(this.currentPop,'magma')
+    }
+
+    console.log('Checkbox state changed. New value:', this.vis_selection);
+
+    
+  }
 
   // Change the field displayed based on a click
   selectPop(pop:string){
@@ -113,6 +143,8 @@ export class SelectorSidebarComponent implements OnInit{
     var Button = document.getElementById('dropdownDevScenarios');
     if (Button) {Button.click();}
 
+    this.vis_pop = false
+    console.log("Vis pop state = ", this.vis_pop)
     this.changeFieldSymbology(this.current_field)
 }
 
