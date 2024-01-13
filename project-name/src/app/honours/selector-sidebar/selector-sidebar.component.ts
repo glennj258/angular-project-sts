@@ -79,36 +79,13 @@ export class SelectorSidebarComponent implements OnInit{
 
 
   vis_selection: string = "pop";
-  vis_pop: boolean = true
+  vis_access: boolean = false
 
   checkbox_id = "check"
   toggle_vis = new Event('change', { bubbles: true });
 
 
   ngOnInit(): void {
-    // Get a reference to the checkbox element
-    const checkbox = document.getElementById('check');
-
-    if (checkbox instanceof HTMLInputElement){
-     // Add an event listener to the checkbox
-     this.vis_pop = !(checkbox.checked)
-     console.log(this.vis_pop)
-     this.vis_pop = !(checkbox.checked)
-     console.log(this.vis_pop)
-     checkbox.addEventListener('change', function() {
-      // Check if the checkbox is checked
-      if (checkbox.checked) {
-        // Perform actions when the checkbox is checked
-        console.log('Checkbox is checked!')
-        // You can add more actions or call functions here
-      } else {
-        console.log('Checkbox is unchecked!')
-        // Perform actions when the checkbox is unchecked
-        // You can add more actions or call functions here
-      }
-    });
-    }
-
     
   }
 
@@ -124,12 +101,10 @@ export class SelectorSidebarComponent implements OnInit{
 }
 
   onCheckboxChange() {
-    console.log("this vis pop state = ", this.vis_pop)
-    console.log("OnCheckbox Change triggered")
     
-    if (this.vis_pop === true){
+    if (this.vis_access === true){
       // switch the visualised field to tha access field
-      this.vis_pop = false
+
       this.vis_selection = "access"
 
       this.changeFieldSymbology(this.current_field)
@@ -137,7 +112,7 @@ export class SelectorSidebarComponent implements OnInit{
     
     } else {
       // switch the visualised field to the population field
-      
+
       this.vis_selection = "pop" // adding a reset to pop
       this.changeFieldSymbology(this.currentPop,'magma')
     }
@@ -149,20 +124,19 @@ export class SelectorSidebarComponent implements OnInit{
 
   updateCheckbox(to_field:string){
     // changes the checkbox to the correct toggle based on what visualisation is desired
-
     if (to_field === "access"){
-      if (this.vis_selection === "pop" || this.vis_pop === true){
+      if (this.vis_selection === "pop" || this.vis_access === false){
         triggerCheckboxChange(this.checkbox_id)
         this.vis_selection = "access"
-        this.vis_pop === false
+        this.vis_access === true
       }
     }
 
     if (to_field === "pop"){
-      if (this.vis_selection === "access" || this.vis_pop === false){
+      if (this.vis_selection === "access" || this.vis_access === true){
         triggerCheckboxChange(this.checkbox_id)
         this.vis_selection = "pop"
-        this.vis_pop === true
+        this.vis_access === false
       }
     }
 
@@ -171,7 +145,12 @@ export class SelectorSidebarComponent implements OnInit{
   // Change the field displayed based on a click
   selectPop(pop:string){
 
+    console.log("before update vis_access = ", this.vis_access)
+    console.log("before update vis_selection = ", this.vis_selection)
     this.updateCheckbox("pop")
+    console.log("After update vis_access = ", this.vis_access)
+    console.log("After update vis_selection = ", this.vis_selection)
+    console.log("")
 
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownPop');
@@ -183,28 +162,33 @@ export class SelectorSidebarComponent implements OnInit{
 
   // Change the field displayed based on a click
   selectDevScenario(DS:string) {
-    console.log("Previous field", this.current_field)
-    
+    //console.log("Previous field", this.current_field)
+
+    console.log("before update vis_access = ", this.vis_access)
+    console.log("before update vis_selection = ", this.vis_selection)
     this.updateCheckbox("access")
+    console.log("After update vis_access = ", this.vis_access)
+    console.log("After update vis_selection = ", this.vis_selection)
+    console.log("")
     
 
     this.currentDS = DS
     this.current_field = this.getAccessFieldName(this.currentMode, this.currentService, DS)
 
-    console.log("Updated Field:", this.current_field)
+    //console.log("Updated Field:", this.current_field)
     
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownDevScenarios');
     if (Button) {Button.click();}
 
-    this.vis_pop = false
-    console.log("Vis pop state = ", this.vis_pop)
     this.changeFieldSymbology(this.current_field)
 }
 
   // Change the field displayed based on a click
   selectService(service:string) {
     console.log("Previous field", this.current_field)
+
+    this.updateCheckbox("access")
 
     this.currentService = service
     this.current_field = this.getAccessFieldName(this.currentMode, service, this.currentDS)
@@ -221,6 +205,8 @@ export class SelectorSidebarComponent implements OnInit{
   // Change the field displayed based on a click
   selectMode(mode:string) {
     console.log("Previous field", this.current_field)
+
+    this.updateCheckbox("access")
 
     this.currentMode = mode
     this.current_field = this.getAccessFieldName(mode, this.currentService, this.currentDS)
