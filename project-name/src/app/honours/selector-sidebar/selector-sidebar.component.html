@@ -35,242 +35,276 @@
     </div>
 
 
+
+<!-- Visualisation Switch -->
+<div class = "bg-blue-950 px-4 pb-4">
+    <div class = "rounded-lg bg-slate-700 p-4 border border-slate-700 shadow-md text-slate-200">
+        <!-- Toggle switch (from flowbite)-->
+        <div class = "flex items-center justify-end">
+            <div class="flex-grow">
+                Visualisation displayed
+            </div>
+
+            <!-- Toggle switch -->
+                <div class = "ms-5 me-3 text-sm font-medium items-center">
+                    Population
+                </div>
+            
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input id = "check" type="checkbox" [(ngModel)]="vis_access" (change)="onCheckboxChange()" value="" class="sr-only peer">
+            
+                    <div class="w-11 h-6 bg-orange-600 peer-focus:outline-none
+                        peer-focus:ring-4 peer-focus:ring-green-700 dark:peer-focus:ring-green-700 rounded-full 
+                        peer dark:bg-orange-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] 
+                        after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
+                        dark:border-gray-600 peer-checked:bg-green-700">
+                    </div>
+                    <!-- <span class="ms-3 text-sm font-medium ">Show Accessiblity</span> -->
+                </label>
+    
+                <div class = "ms-3 text-sm font-medium items-center">
+                    Accessibility
+                </div>
+
+        </div>
+    </div>
+</div>
+
 <!-- Population dropdown -->
+<div class = "bg-blue-950 px-4 pb-4">
+    <div class = "rounded-lg bg-slate-700 p-4 border border-slate-700 shadow-md text-slate-200">
 
-<div class = "flex">
-<div class = "me-3 text-sm font-medium text-gray-900 items-center">
-    Show population
-</div>
-`
-    <label class="relative inline-flex items-center cursor-pointer">
-        <input id = "check" type="checkbox" [(ngModel)]="vis_access" (change)="onCheckboxChange()" value="" class="sr-only peer">
 
-        <div class="w-11 h-6 bg-orange-600 peer-focus:outline-none
-            peer-focus:ring-4 peer-focus:ring-green-900 dark:peer-focus:ring-green-900 rounded-full 
-            peer dark:bg-orange-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] 
-            after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
-            dark:border-gray-600 peer-checked:bg-green-900">
+
+
+        <div>
+            <b>Population Statistics</b>
         </div>
-        <span class="ms-3 text-sm font-medium text-gray-900 ">Show Accessiblity</span>
-    </label>
-</div>
+        <div class="flex px-10 py-2">
 
-
-<div class="flex px-10 py-2">
-    <div>
-        Show Population
-    </div>
-
-
-
-    <!-- title block -->
-    <div class="w-1/3 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
-        dark:bg-blue-600 dark:focus:ring-blue-800">
-        Population:
-    </div>
-
-    <button id="dropdownPop" data-dropdown-toggle="dropdownPopMenu"
-        class="w-1/3 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
-        type="button">
-        <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
-        <div class = "inline-flex items-center">
-            {{pop_labels[this.currentPop]}}
-
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-            <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
-             Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
-        </div>
-
-    </button>
         
-    <!-- Dropdown menu -->
-    <div id="dropdownPopMenu" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        
+        
+            <!-- title block -->
+            <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
+                dark:bg-blue-600 dark:focus:ring-blue-800">
+                Population:
+            </div>
+        
+            <button id="dropdownPop" data-dropdown-toggle="dropdownPopMenu"
+                class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
+                type="button">
+                <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
+                <div class = "inline-flex items-center">
+                    {{pop_labels[this.currentPop]}}
+        
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
+                     Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
+                </div>
+        
+            </button>
+                
+            <!-- Dropdown menu -->
+            <div id="dropdownPopMenu" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        
+                    <li *ngFor="let pop of pops">
+                        <button (click)="selectPop(pop)"
+                        class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {{pop_labels[pop]}}
+                        </button>
+                    </li>
+        
+                </ul>
+            </div>
+        </div>
 
-            <li *ngFor="let pop of pops">
-                <button (click)="selectPop(pop)"
-                class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{pop_labels[pop]}}
-                </button>
-            </li>
-
-        </ul>
+        
     </div>
+
 </div>
+
+
 
 
 
 <!-- Accessibility section -->
+<div class = "bg-blue-950 px-4">
+    <div class = "rounded-lg bg-slate-700 p-4 border border-slate-700 shadow-md text-slate-200">
+        <div>
+            <b>Accessibility Statistics</b>
+        </div>
 
+        <!-- Development Scenarios dropdown -->
+        <div class="flex px-10 py-2">
+
+            <!-- title block -->
+            <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
+                dark:bg-blue-600 dark:focus:ring-blue-800">
+                Development Scenario:
+            </div>
+
+            <button id="dropdownDevScenarios" data-dropdown-toggle="dropdownDS"
+                class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
+                type="button">
+                <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
+                <div class = "inline-flex items-center">
+                    {{devScenarios_labels[this.currentDS]}}
+
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                    <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
+                    Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
+                </div>
+
+            </button>
+                
+            <!-- Dropdown menu -->
+            <div id="dropdownDS" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                    <li *ngFor="let DS of devScenarios">
+                        <button (click)="selectDevScenario(DS)"
+                        class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {{devScenarios_labels[DS]}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Services Dropdown -->
+        <div class="flex px-10 py-2">
+
+            <!-- title block -->
+            <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
+                dark:bg-blue-600 dark:focus:ring-blue-800">
+                Service:
+            </div>
+
+            <button id="dropdownServices" data-dropdown-toggle="dropdownService"
+                class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center 
+                " 
+                type="button">
+                <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
+                <div class = "inline-flex items-center">
+
+                    {{services_labels[this.currentService]}}
+
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+
+                </div>
+
+                <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
+                    Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
+            </button>
+                
+            <!-- Dropdown menu -->
+            <div id="dropdownService" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                    <li *ngFor="let service of services">
+                        <button (click)="selectService(service)"
+                        class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {{services_labels[service]}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Services dropdown - old drop down copy-->
+        <!-- <div class="flex p-10">
+            <button id="dropdownServices" data-dropdown-toggle="dropdownService" data-dropdown-placement="right"
+                class="me-3 mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-sm text-sm px-5 py-2.5 text-center inline-flex items-center 
+                dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                type="button">
+                Service
+
+                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg> -->
+                <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
+                    Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
+            <!-- </button> -->
+                
+            <!-- Dropdown menu -->
+            <!-- <div id="dropdownService" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                    <li *ngFor="let service of services">
+                        <button (click)="selectService(service)"
+                        class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {{services_labels[service]}}
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div> -->
+            
+
+        <!-- Modes dropdown -->
+        <div class="flex px-10 py-2">
+
+            <!-- title block -->
+            <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
+                dark:bg-blue-600 dark:focus:ring-blue-800">
+                Mode:
+            </div>
+
+            <button id="dropdownModes" data-dropdown-toggle="dropdownMode"
+                class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
+                type="button">
+                <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
+                <div class = "inline-flex items-center">
+                    {{modes_labels[this.currentMode]}}
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+
+                </div>
+
+                <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
+                    Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
+            </button>
+                
+            <!-- Dropdown menu -->
+            <div id="dropdownMode" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                    <li *ngFor="let mode of modes">
+                        <button (click)="selectMode(mode)"
+                        class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {{modes_labels[mode]}}
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Environmental and Economic impact -->
 <div>
-    Accessibility visualisation and statistics
-</div>
-
-<!-- Development Scenarios dropdown -->
-<div class="flex px-10 py-2">
-
-    <!-- title block -->
-    <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
-        dark:bg-blue-600 dark:focus:ring-blue-800">
-        Development Scenario:
-    </div>
-
-    <button id="dropdownDevScenarios" data-dropdown-toggle="dropdownDS"
-        class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
-        type="button">
-        <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
-        <div class = "inline-flex items-center">
-            {{devScenarios_labels[this.currentDS]}}
-
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-            <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
-             Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
-        </div>
-
-    </button>
-        
-    <!-- Dropdown menu -->
-    <div id="dropdownDS" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-
-            <li *ngFor="let DS of devScenarios">
-                <button (click)="selectDevScenario(DS)"
-                class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{devScenarios_labels[DS]}}
-                </button>
-            </li>
-        </ul>
-    </div>
-</div>
-
-
-<!-- Services Dropdown -->
-<div class="flex px-10 py-2">
-
-    <!-- title block -->
-    <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
-        dark:bg-blue-600 dark:focus:ring-blue-800">
-        Service:
-    </div>
-
-    <button id="dropdownServices" data-dropdown-toggle="dropdownService"
-        class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center 
-        " 
-        type="button">
-        <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
-        <div class = "inline-flex items-center">
-
-            {{services_labels[this.currentService]}}
-
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-
-        </div>
-
-        <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
-             Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
-    </button>
-        
-    <!-- Dropdown menu -->
-    <div id="dropdownService" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-
-            <li *ngFor="let service of services">
-                <button (click)="selectService(service)"
-                class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{services_labels[service]}}
-                </button>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- Services dropdown - old drop down copy-->
-<!-- <div class="flex p-10">
-    <button id="dropdownServices" data-dropdown-toggle="dropdownService" data-dropdown-placement="right"
-        class="me-3 mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-sm text-sm px-5 py-2.5 text-center inline-flex items-center 
-        dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-        type="button">
-        Service
-
-        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg> -->
-        <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
-             Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
-    <!-- </button> -->
-        
-    <!-- Dropdown menu -->
-    <!-- <div id="dropdownService" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-
-            <li *ngFor="let service of services">
-                <button (click)="selectService(service)"
-                class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{services_labels[service]}}
-                </button>
-            </li>
-
-        </ul>
-    </div>
-</div> -->
-    
-
-<!-- Modes dropdown -->
-<div class="flex px-10 py-2">
-
-    <!-- title block -->
-    <div class="w-1/2 mb-3 md:mb-0 text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tl-sm rounded-bl-sm text-sm px-5 py-2.5 text-center items-center 
-        dark:bg-blue-600 dark:focus:ring-blue-800">
-        Mode:
-    </div>
-
-    <button id="dropdownModes" data-dropdown-toggle="dropdownMode"
-        class="w-1/2 mb-3 md:mb-0 text-blue-700 bg-white border border-blue-700 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 
-        font-medium rounded-tr-sm rounded-br-sm text-sm px-5 py-2.5 text-center items-center" 
-        type="button">
-        <!-- dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 -->
-        <div class = "inline-flex items-center">
-            {{modes_labels[this.currentMode]}}
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-
-        </div>
-
-        <!-- Down Arrow: viewBox="0 0 10 6" d="m1 1 4 4 4-4""
-             Right: viewBox="0 0 6 10" d="m1 9 4-4-4-4" -->
-    </button>
-        
-    <!-- Dropdown menu -->
-    <div id="dropdownMode" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-
-            <li *ngFor="let mode of modes">
-                <button (click)="selectMode(mode)"
-                class="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{modes_labels[mode]}}
-                </button>
-            </li>
-
-        </ul>
-    </div>
-</div>
-
-   
 
 </div>
+

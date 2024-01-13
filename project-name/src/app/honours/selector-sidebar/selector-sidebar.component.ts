@@ -92,12 +92,6 @@ export class SelectorSidebarComponent implements OnInit{
   add_amount(num:number): void {
     this.addition = this.addition + num;
     this.updateNumber.emit(this.addition);
-
-    // hide the dropdown after selection
-    var Button = document.getElementById('dropdownDevScenarios');
-    if (Button) {
-        Button.click();
-    }
 }
 
   onCheckboxChange() {
@@ -145,12 +139,7 @@ export class SelectorSidebarComponent implements OnInit{
   // Change the field displayed based on a click
   selectPop(pop:string){
 
-    console.log("before update vis_access = ", this.vis_access)
-    console.log("before update vis_selection = ", this.vis_selection)
     this.updateCheckbox("pop")
-    console.log("After update vis_access = ", this.vis_access)
-    console.log("After update vis_selection = ", this.vis_selection)
-    console.log("")
 
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownPop');
@@ -164,14 +153,8 @@ export class SelectorSidebarComponent implements OnInit{
   selectDevScenario(DS:string) {
     //console.log("Previous field", this.current_field)
 
-    console.log("before update vis_access = ", this.vis_access)
-    console.log("before update vis_selection = ", this.vis_selection)
     this.updateCheckbox("access")
-    console.log("After update vis_access = ", this.vis_access)
-    console.log("After update vis_selection = ", this.vis_selection)
-    console.log("")
     
-
     this.currentDS = DS
     this.current_field = this.getAccessFieldName(this.currentMode, this.currentService, DS)
 

@@ -1,5 +1,5 @@
 <!--Create a button that calls the existing changeLayerColour method when pressed-->
-<div class="font-lato">
+<!-- <div class="font-lato">
 <button (click)="changeLayerColour('blue')">
     <div class="text-blue-500">
         Change Layer Colour Blue
@@ -14,38 +14,52 @@
 </button>
 
 
-</div>
+</div> -->
 
-<div class="flex">
-    <div class="w-3/5">
-        <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">
-        <div id="mapView" style="height: 800px;"></div>
-    </div>
-    
-   
+<div class="bg-blue-950 text-slate-200 p-4 font-lato">
 
-    <div class="w-2/5">
-        <div class="flex p-10">
-
-            <button (click)="changeFieldSymbology('Walk_gc_md_inis_Access')">
-                <div class=" text-black border hover:border-blue-900">
-                    Change Field displayed - mdINISAccess
-                </div>
-            </button>
-    
-            <button (click)="changeFieldSymbology('Population_density')">
-                <div class="text-lato text-black border hover:border-blue-900">
-                    Change Field displayed - pop21
-                </div>
-            </button>
+    <div class="rounded-lg bg-slate-700 p-4 border border-slate-700 shadow-md h-1/5">
+        <div class="text-lg">
+            Transport and Land-use in Canberra and Queanbeyan
         </div>
+        <div class="text-sm">
+            Results and visualisations from Glenn's 2022 honours project
+        </div>
+    </div>
 
-
-        <app-selector-sidebar [csvRenderer]="csvLayer.renderer" [addition] = number  [featureRenderer]="featureLayer.renderer"
-        (updateCSVRenderer)="updateCSVRenderer($event)" (updateNumber)="updateNumber($event)"
-        (outputFeatureRenderer)="updateFeatureRenderer($event)"></app-selector-sidebar>
+    <div class="flex py-4 h-4/5">
+        <div class="w-3/5 rounded-lg bg-slate-700 p-5 border border-slate-700 shadow-md">
+            <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">
+            <div id="mapView" style="height: 100%;"></div>
+        </div>
+        
+       
+    
+        <div class="w-2/5">
+            <!-- Original change field code -->
+            <!-- <div class="flex p-10">
+    
+                <button (click)="changeFieldSymbology('Walk_gc_md_inis_Access')">
+                    <div class=" text-black border hover:border-blue-900">
+                        Change Field displayed - mdINISAccess
+                    </div>
+                </button>
+        
+                <button (click)="changeFieldSymbology('Population_density')">
+                    <div class="text-lato text-black border hover:border-blue-900">
+                        Change Field displayed - pop21
+                    </div>
+                </button>
+            </div>
+     -->
+    
+            <app-selector-sidebar [csvRenderer]="csvLayer.renderer" [addition] = number  [featureRenderer]="featureLayer.renderer"
+            (updateCSVRenderer)="updateCSVRenderer($event)" (updateNumber)="updateNumber($event)"
+            (outputFeatureRenderer)="updateFeatureRenderer($event)"></app-selector-sidebar>
+        </div>
     </div>
 </div>
+
 
 
 <div>

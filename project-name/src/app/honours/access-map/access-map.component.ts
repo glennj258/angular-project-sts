@@ -61,7 +61,7 @@ export class AccessMapComponent implements OnInit {
     const view = new MapView({
       container: 'mapView',
       map: map,
-      center: [149.105, -35.327], // Coordinates for Los Angeles
+      center: [149.115, -35.287], // Coordinates for Los Angeles
       zoom: 11,
       ui: {
         components: ["zoom", "attribution"]  // Include zoom and attribution
