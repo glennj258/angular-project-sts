@@ -81,7 +81,34 @@ export class SelectorSidebarComponent implements OnInit{
   vis_selection: string = "pop";
   vis_pop: boolean = true
 
+  checkbox_id = "check"
+  toggle_vis = new Event('change', { bubbles: true });
+
+
   ngOnInit(): void {
+    // Get a reference to the checkbox element
+    const checkbox = document.getElementById('check');
+
+    if (checkbox instanceof HTMLInputElement){
+     // Add an event listener to the checkbox
+     this.vis_pop = !(checkbox.checked)
+     console.log(this.vis_pop)
+     this.vis_pop = !(checkbox.checked)
+     console.log(this.vis_pop)
+     checkbox.addEventListener('change', function() {
+      // Check if the checkbox is checked
+      if (checkbox.checked) {
+        // Perform actions when the checkbox is checked
+        console.log('Checkbox is checked!')
+        // You can add more actions or call functions here
+      } else {
+        console.log('Checkbox is unchecked!')
+        // Perform actions when the checkbox is unchecked
+        // You can add more actions or call functions here
+      }
+    });
+    }
+
     
   }
 
@@ -97,8 +124,8 @@ export class SelectorSidebarComponent implements OnInit{
 }
 
   onCheckboxChange() {
-    console.log(this.vis_pop)
-
+    console.log("this vis pop state = ", this.vis_pop)
+    console.log("OnCheckbox Change triggered")
     
     if (this.vis_pop === true){
       // switch the visualised field to tha access field
@@ -110,7 +137,7 @@ export class SelectorSidebarComponent implements OnInit{
     
     } else {
       // switch the visualised field to the population field
-
+      
       this.vis_selection = "pop" // adding a reset to pop
       this.changeFieldSymbology(this.currentPop,'magma')
     }
@@ -120,8 +147,32 @@ export class SelectorSidebarComponent implements OnInit{
     
   }
 
+  updateCheckbox(to_field:string){
+    // changes the checkbox to the correct toggle based on what visualisation is desired
+
+    if (to_field === "access"){
+      if (this.vis_selection === "pop" || this.vis_pop === true){
+        triggerCheckboxChange(this.checkbox_id)
+        this.vis_selection = "access"
+        this.vis_pop === false
+      }
+    }
+
+    if (to_field === "pop"){
+      if (this.vis_selection === "access" || this.vis_pop === false){
+        triggerCheckboxChange(this.checkbox_id)
+        this.vis_selection = "pop"
+        this.vis_pop === true
+      }
+    }
+
+  }
+
   // Change the field displayed based on a click
   selectPop(pop:string){
+
+    this.updateCheckbox("pop")
+
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownPop');
     if (Button) {Button.click();}
@@ -133,6 +184,9 @@ export class SelectorSidebarComponent implements OnInit{
   // Change the field displayed based on a click
   selectDevScenario(DS:string) {
     console.log("Previous field", this.current_field)
+    
+    this.updateCheckbox("access")
+    
 
     this.currentDS = DS
     this.current_field = this.getAccessFieldName(this.currentMode, this.currentService, DS)
@@ -399,4 +453,27 @@ function rgbStringToArray(rgbString:string, transparency:number=1) {
     // Return a default value or handle the case where the regex doesn't match
     return [];
   }
+}
+
+function triggerCheckboxChange(checkbox_id:string) {
+  // Get a reference to the checkbox element
+  var checkbox = document.getElementById(checkbox_id);
+  var checkbox_state = false // intialise the checkbox state
+
+  // Check if the checkbox element exists
+  if (checkbox instanceof HTMLInputElement) {
+    // Change the state of the checkbox (toggling it)
+    checkbox.checked = !checkbox.checked;
+
+    // Create a new 'change' event
+    var changeEvent = new Event('change', { bubbles: true });
+
+    // Dispatch the 'change' event on the checkbox
+    checkbox.dispatchEvent(changeEvent);
+    checkbox_state = checkbox.checked
+  } else {
+    console.error('Checkbox element not found or not an input element!');
+  }
+
+  return checkbox_state
 }
