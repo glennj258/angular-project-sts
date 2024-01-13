@@ -21,6 +21,7 @@ import { HonoursComponent } from './honours/honours.component';
 import { AccessMapComponent } from './honours/access-map/access-map.component';
 import { SelectorSidebarComponent } from './honours/selector-sidebar/selector-sidebar.component';
 import { UrbanistContentComponent } from './urbanist-content/urbanist-content.component';
+import { IndicatorComponent } from './honours/indicator/indicator.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UrbanistContentComponent } from './urbanist-content/urbanist-content.co
     HonoursComponent,
     AccessMapComponent,
     SelectorSidebarComponent,
-    UrbanistContentComponent
+    UrbanistContentComponent,
+    IndicatorComponent
   ],
   imports: [
     HttpClientModule,
