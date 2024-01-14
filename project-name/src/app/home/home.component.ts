@@ -3,6 +3,8 @@ import {DataService} from "../data.service";
 import {TmdbService} from "../tmdb.service";
 import {Router} from "@angular/router";
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

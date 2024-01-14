@@ -80,12 +80,12 @@ export class AccessMapComponent implements OnInit {
         fieldInfos: [
           {
             fieldName: "Person",
-            label: "Population",
+            label: "Population (2021)",
             visible: true
           },
           {
             fieldName: "popdens21_labels",
-            label: "Population Density",
+            label: "Population Density (2021)",
             visible: true
           }
       ]
@@ -173,7 +173,7 @@ export class AccessMapComponent implements OnInit {
     view.map.add(this.featureLayer)
 
     // add the csv layer to the map
-    view.map.add(this.csvLayer);
+    //view.map.add(this.csvLayer);
 
     getMagmaColours(this.no_mag_colours)
 

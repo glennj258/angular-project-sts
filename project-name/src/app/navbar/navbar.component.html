@@ -19,6 +19,15 @@
 
         <li class = "flex mx-2 w-28 h-10 justify-center items-center
         border-b-2 hover:bg-opacity-0 hover:border-b-2 
+        {{ getCurrentURL() === getBaseURL() + '/honours'
+        ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
+        : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
+        routerLink="/honours">
+        <a>Honours</a>
+        </li>
+
+        <li class = "flex mx-2 w-28 h-10 justify-center items-center
+        border-b-2 hover:bg-opacity-0 hover:border-b-2 
         {{ getCurrentURL() === getBaseURL() + '/light-rail'
         ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
         : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
@@ -26,14 +35,14 @@
         <a>Light Rail</a>
         </li>
 
-        <li class = "flex mx-2 w-28 h-10 justify-center items-center
+        <!-- <li class = "flex mx-2 w-28 h-10 justify-center items-center
           border-b-2 hover:bg-opacity-0 hover:border-b-2 
           {{ getCurrentURL() === getBaseURL() + '/item/16'
           ? 'selected border-b-2 selected border-electricBlue text-electricBlue'
           : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
           routerLink="/item/16">
           <a>Animation</a>
-        </li>
+        </li> -->
 
         <li class = "flex mx-2 w-40 h-10 justify-center items-center
         border-b-2 hover:bg-opacity-0 hover:border-b-2 

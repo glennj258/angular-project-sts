@@ -11,6 +11,7 @@ import Graphic from '@arcgis/core/Graphic';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol'
 import 'flowbite';
+import { initFlowbite } from 'flowbite';
 import { FormsModule } from '@angular/forms';
 
 import { HonoursDataService} from "src/app/honours-data.service";
@@ -89,6 +90,7 @@ export class SelectorSidebarComponent implements OnInit{
 
 
   ngOnInit(): void {
+    initFlowbite();
     this.honoursService.updateVariable(this.currentDS)
   }
 
