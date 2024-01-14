@@ -6,6 +6,7 @@ import {TitleDetailsComponent} from "./title-details/title-details.component"; /
 import { VisDensComponent } from './vis-dens/vis-dens.component';
 import { LightRailComponent } from './light-rail/light-rail.component';
 import { HonoursComponent } from './honours/honours.component';
+import { UrbanistContentComponent } from './urbanist-content/urbanist-content.component';
 
 // old empty routes
 //const routes: Routes = [];
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'visualising-density', component: VisDensComponent},
   { path: 'light-rail', component: LightRailComponent},
   { path: 'honours', component: HonoursComponent},
+  { path: 'other-content', component: UrbanistContentComponent},
   { path: 'home', component: HomeComponent},
   {path: '', redirectTo: "/home", pathMatch: 'full'}// Route back to home
   // Other routes for different pages if needed
