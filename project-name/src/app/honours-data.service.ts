@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from, mergeMap, Observable } from 'rxjs';
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { Subject } from 'rxjs';
 
 
 // snippet-end:[s3.JavaScript.buckets.getobjectV3]
@@ -23,6 +24,14 @@ export class HonoursDataService {
   private bucketName = 'sts-mode-increase-results';
   private objectKey = 'Totals_emissions_economics.csv';
 
+  // Create a subject to track the development scenario
+  private dsSubject = new Subject<string>();
+  // Observable to which components can subscribe
+  dsChanged$ = this.dsSubject.asObservable();
+
+  // Variable to be observed
+  private currentDevScen = 'actual';
+
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +40,21 @@ export class HonoursDataService {
   }
 
   getEeResultsLocal(): Observable<any> {
-    return this.http.get('/assets/data/totals_ee_json.json')
+    return this.http.get('/assets/data/Totals_emissions_economics.json')
+  }
+
+
+  
+  // Function to update the variable and notify subscribers
+  updateVariable(newDS: string) {
+    this.currentDevScen = newDS;
+    // Notify subscribers that the variable has changed
+    this.dsSubject.next(this.currentDevScen);
+  }
+
+  // Getter to access the current develoopment scenario
+  getVariableValue(): string {
+    return this.currentDevScen;
   }
 
   //   // const response = await client.send(command);

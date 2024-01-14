@@ -304,7 +304,14 @@
 </div>
 
 <!-- Environmental and Economic impact -->
-<div class="px-4 pt-4">
-    <app-indicator></app-indicator>
+<div class="pt-4 flex">
+    <div class="px-4 w-1/2">
+        <app-indicator [Outcome]="'economics'" [DevelopmentScenario]="this.currentDS"></app-indicator>
+    </div>
+    
+    <div class = "pr-4 flex-grow w-1/2">
+        <app-indicator [Outcome]="'emissions'" [DevelopmentScenario]="this.currentDS"></app-indicator>
+    </div>
+   
 </div>
 

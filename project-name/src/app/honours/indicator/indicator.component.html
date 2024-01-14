@@ -1,7 +1,22 @@
 <!-- Population dropdown -->
 <div class = "bg-blue-950">
     <div class = "rounded-lg bg-slate-700 p-4 border border-slate-700 shadow-md text-slate-200">
-        <p>indicator here</p>
-        {{ee_data}}
+        <div class="text-md">
+            <b>{{get_outcome_title(this.Outcome)}}</b>
+        </div>
+        
+        <!-- <div class="">
+            {{get_display_stat(ee_data)}}
+        </div>
+         -->
+
+
+        <div class = "text-4xl" [ngClass]="[this.Outcome] + '-indicator-caption'">
+            {{update_caption_text(this.Outcome, this.ee_data)}} 
+        </div>
+        <div>
+            / year
+        </div>
+
     </div>
 </div>

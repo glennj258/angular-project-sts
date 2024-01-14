@@ -13,6 +13,7 @@ import SimpleFillSymbol from '@arcgis/core/symbols/SimpleFillSymbol'
 import 'flowbite';
 import { FormsModule } from '@angular/forms';
 
+import { HonoursDataService} from "src/app/honours-data.service";
 
 import { interpolateMagma, interpolateGreens} from 'd3-scale-chromatic';
 
@@ -84,9 +85,11 @@ export class SelectorSidebarComponent implements OnInit{
   checkbox_id = "check"
   toggle_vis = new Event('change', { bubbles: true });
 
+  constructor(private honoursService: HonoursDataService) {}
+
 
   ngOnInit(): void {
-    
+    this.honoursService.updateVariable(this.currentDS)
   }
 
   add_amount(num:number): void {
@@ -156,6 +159,7 @@ export class SelectorSidebarComponent implements OnInit{
     this.updateCheckbox("access")
     
     this.currentDS = DS
+    this.honoursService.updateVariable(this.currentDS)
     this.current_field = this.getAccessFieldName(this.currentMode, this.currentService, DS)
 
     //console.log("Updated Field:", this.current_field)
@@ -177,6 +181,8 @@ export class SelectorSidebarComponent implements OnInit{
     this.current_field = this.getAccessFieldName(this.currentMode, service, this.currentDS)
 
     console.log("Updated Field:", this.current_field)
+    // console.log("HS service DS" , this.honoursService.getVariableValue())
+    // console.log("")
     
     // hide the dropdown after selection
     var Button = document.getElementById('dropdownServices');

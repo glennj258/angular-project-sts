@@ -1,0 +1,20 @@
+[
+  {
+    "Outcome":"Economics ($M per year)",
+    "no_change":0,
+    "actual":30.54222772,
+    "equal_dev":23.13514547,
+    "greenfield":15.51289522,
+    "md_inis":34.81787182,
+    "tod_infill":35.61841928
+  },
+  {
+    "Outcome":"Emissions (kt CO2 per year)",
+    "no_change":0,
+    "actual":-16.11804075,
+    "equal_dev":-11.97321517,
+    "greenfield":-8.15443995,
+    "md_inis":-18.37185207,
+    "tod_infill":-18.5239752
+  }
+]
