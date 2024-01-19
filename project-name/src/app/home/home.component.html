@@ -53,7 +53,73 @@
 <!--  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>-->
 <!--</div>-->
 
-  <app-navbar></app-navbar>
+<app-navbar></app-navbar>
+
+
+<!-- New home page data -->
+<div class="bg-slate-900 text-slate-200 p-4 font-lato">
+  <div class="p-4 bg-slate-900">
+
+    <b class="text-lg"><u>Content</u></b>
+
+    <div class="flex">
+
+      <div class="pt-4 px-4 w-1/2"> 
+        <app-thumbnail></app-thumbnail>
+      </div>
+      <div class="pt-4 px-4 w-1/2">
+        <app-thumbnail 
+        [title]="'Light Rail Accessibility'" 
+        [subtitle]="'What the future of light rail in Canberra could look like - investigating the feasibility of different potential future light rail routes'"
+        [image_path]="'assets/thumbnail-images/lightrail_thumbnail_700_350.png'"
+        [page_path]="'/light-rail'">
+      </app-thumbnail>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- New home page data -->
+<div class="bg-slate-900 text-slate-200 p-4 font-lato">
+  <div class="p-4 bg-slate-900">
+
+      <b class="text-lg"><u>Content</u></b>
+
+      <div class="flex">
+
+          <div class="pt-4 px-4 w-1/2"> 
+
+              <div class="rounded-lg bg-slate-700 p-5 border border-slate-700 shadow-md">
+                <img src="assets/thumbnail-images/honours_thumbnail.png" alt="Honours thumbnail" class="mr-4 object-contain w-full h-full">
+                  Link to Honours              
+                </div>
+
+              <p class="pt-4 ms-4 text-xl">
+                Medium-density Housing and Transport
+              </p>
+              <div class="ms-4 text-xs pt-2">
+                  My 2022 Honours project, investigating the link between different ways Canberra could develop, and their
+                  impact on the usage of sustainable transport modes (walking, cycling and public transport)
+              </div>
+
+              
+          </div>
+          
+          <div class="px-4 w-1/2"> <p class="pt-4 ms-4"><i>Carjacking the American Dream</i></p>
+
+              <div class="rounded-lg bg-slate-700 p-5 border border-slate-700 shadow-md">
+                  <iframe width="420" height="237" src="https://www.youtube.com/embed/oOttvpjJvAo?si=GspNfdrUXXhbJ3BZ" 
+                  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                  gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> <!-- original: width="560" height="315" -->
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+</div>
+
 
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;" *ngIf="mainContentshown">
