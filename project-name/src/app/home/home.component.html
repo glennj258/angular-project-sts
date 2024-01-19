@@ -67,7 +67,12 @@
     <div class="flex">
 
       <div class="pt-4 px-4 w-1/2"> 
-        <app-thumbnail></app-thumbnail>
+        <app-thumbnail
+          [title]="'Medium-density Housing and Transport (Honours)'"
+          [subtitle]="'My 2022 Honours project, investigating the link between different ways Canberra could develop, and their impact on the usage of sustainable transport modes (walking, cycling and public transport)'"
+          [image_path]="'assets/thumbnail-images/honours_thumbnail_700_350.png'"
+          [page_path]="'/honours'"
+        ></app-thumbnail>
       </div>
 
       <div class="pt-4 px-4 w-1/2">
@@ -99,7 +104,7 @@
 </div>
 
 <!-- New home page data -->
-<div class="bg-slate-900 text-slate-200 p-4 font-lato">
+<!-- <div class="bg-slate-900 text-slate-200 p-4 font-lato">
   <div class="p-4 bg-slate-900">
 
       <b class="text-lg"><u>Content</u></b>
@@ -129,14 +134,14 @@
               <div class="rounded-lg bg-slate-700 p-5 border border-slate-700 shadow-md">
                   <iframe width="420" height="237" src="https://www.youtube.com/embed/oOttvpjJvAo?si=GspNfdrUXXhbJ3BZ" 
                   title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-                  gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> <!-- original: width="560" height="315" -->
+                  gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
           </div>
 
       </div>
   </div>
 
-</div>
+</div> -->
 
 
 <!-- Page content -->
@@ -205,24 +210,34 @@
   <!--      </li>-->
   <!--    </ul>-->
   <!--  </div>-->
-  <div>
+
+
+  <!-- MOVIE COMPONENT START -->
+
+  <!-- <div>
     <app-popular-media></app-popular-media>
-  </div>
+  </div> -->
 
   <!--  routed list Movie Genres-->
-  <div class="bg-white">
+          <!--            <a [routerLink]="['/item', item.id]">{{ item.name }}</a>-->
+  <!-- <div class="bg-white">
     <h1 class="text-blue-950 text-xl"> <strong> Movie Genres </strong></h1>
     <ul class = "flex gap-4 flex-wrap items-center justify-center ">
 
       <li class = "flex items-center justify-center" *ngFor="let item of listItems">
-        <!--            <a [routerLink]="['/item', item.id]">{{ item.name }}</a>-->
+
         <a class="text-center text-white align-middle items-center justify-center w-40 h-40 pt-16 block shadow-md rounded-lg cursor-pointer
             transition-colors duration-300 ease-in-out bg-blue-500 hover:bg-blue-300
             transform transition-transform hover:scale-110"
            (click)="navigateToItemDetails(item)"> <strong class = "align-middle text-white justify-center">{{ item.name }}</strong> </a>
       </li>
     </ul>
-  </div>
+  </div> -->
+
+
+
+
+  <!-- MOVIE COMPONENT END -->
 
 
   <!-- <div>
@@ -345,7 +360,7 @@
   <!-- <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 40%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
   <div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mock Cinemas - Angular Training" src="//www.arcgis.com/apps/Embed/index.html?webmap=5f5a72fb283d4a62b0dc3eb98d0c9a99&extent=148.9777,-35.2992,149.2017,-35.1977&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&disable_scroll=true&theme=dark"></iframe></div> -->
 
-  <p>
+  <!-- <p>
     Leaflet map
 
   </p>
@@ -365,7 +380,7 @@
       attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
       crossOrigin: true
     }).addTo(map);
-  </script>
+  </script> -->
   <!-- End Page Content -->
 </div>
 
