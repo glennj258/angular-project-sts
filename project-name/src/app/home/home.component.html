@@ -60,22 +60,40 @@
 <div class="bg-slate-900 text-slate-200 p-4 font-lato">
   <div class="p-4 bg-slate-900">
 
-    <b class="text-lg"><u>Content</u></b>
+    <p class="text-2xl">My Projects</p>
 
+
+    <!-- First Row -->
     <div class="flex">
 
       <div class="pt-4 px-4 w-1/2"> 
         <app-thumbnail></app-thumbnail>
       </div>
+
       <div class="pt-4 px-4 w-1/2">
         <app-thumbnail 
-        [title]="'Light Rail Accessibility'" 
-        [subtitle]="'What the future of light rail in Canberra could look like - investigating the feasibility of different potential future light rail routes'"
-        [image_path]="'assets/thumbnail-images/lightrail_thumbnail_700_350.png'"
-        [page_path]="'/light-rail'">
-      </app-thumbnail>
+          [title]="'Light Rail Accessibility'" 
+          [subtitle]="'What the future of light rail in Canberra could look like - investigating the feasibility of different potential future light rail routes'"
+          [image_path]="'assets/thumbnail-images/lightrail_thumbnail_700_350.png'"
+          [page_path]="'/light-rail'">
+        </app-thumbnail>
       </div>
 
+    </div>
+
+    <!-- Second Row -->
+    <div class="flex">
+
+      <div class="pt-4 px-4 w-1/2">
+        <app-thumbnail 
+        [title]="'Visualising Density'" 
+        [subtitle]="'Comparing the density that different housing typologies deliver and what they look like'"
+        [image_path]="'assets/thumbnail-images/Montreal_700_350.png'"
+        [page_path]="'/visualising-density'">
+        </app-thumbnail>
+      </div>
+
+      
     </div>
   </div>
 </div>
