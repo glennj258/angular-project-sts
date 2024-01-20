@@ -1,0 +1,29 @@
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3; /* Adjust the number of lines to truncate */
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; /* Adjust the number of lines to truncate */
+  }
+
+/* Not used */
+  .tooltip-button:hover::before {
+    content: attr(title);
+    white-space: nowrap;
+    position: absolute;
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+    padding-top: 0.25rem/* 4px */;
+    padding-bottom: 0.25rem/* 4px */;
+    border-radius: 0.25rem/* 4px */;
+    /* opacity: 0;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; */
+  }

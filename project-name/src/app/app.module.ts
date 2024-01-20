@@ -23,6 +23,7 @@ import { SelectorSidebarComponent } from './honours/selector-sidebar/selector-si
 import { UrbanistContentComponent } from './urbanist-content/urbanist-content.component';
 import { IndicatorComponent } from './honours/indicator/indicator.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import { ResearchBlockComponent } from './urbanist-content/research-block/research-block.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
     SelectorSidebarComponent,
     UrbanistContentComponent,
     IndicatorComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    ResearchBlockComponent
   ],
   imports: [
     HttpClientModule,
