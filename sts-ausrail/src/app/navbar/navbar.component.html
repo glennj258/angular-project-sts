@@ -1,0 +1,25 @@
+<div class="py-9 bg-slate-900">
+    <nav class="border-b opacity-100 border-gray-700 navbar flex items-center justify-between py-4 px-10 fixed w-full top-0 z-50 
+    bg-blue-950 bg-opacity-75 backdrop-blur-lg ">
+      <div>
+        <h1 class="text-white font-lato text-2xl"> Glenn James </h1> <!-- TMDb Movie Project-->
+      </div>
+
+
+      <ul class="flex space-x-4 navbar-links text-white justify-end
+          cursor-pointer ml-auto font-lato">
+        <li class = "flex mx-2 w-28 h-10 justify-center items-center
+            border-b-2 hover:bg-opacity-0 hover:text-electricBlue hover:border-b-2
+            {{ getCurrentURL() === getBaseURL() + '/home'
+            ? 'selected border-b-2 selected border-electricBlue text-electricBlue' 
+            : 'hover:text-electricBlue border-blue-950 border-opacity-0'}}"
+            routerLink="/">
+          <a>Home</a>
+        </li>
+
+    </ul>
+    <div class="navbar-actions">
+      <!-- Add login/logout buttons or user-related actions here -->
+    </div>
+  </nav>
+</div>
