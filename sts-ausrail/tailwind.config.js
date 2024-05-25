@@ -5,7 +5,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        hg: ['Hanken Grotesk', 'sans-serif'],
+        inter: ['Inter', 'sans-serif']
+    },},
   },
   plugins: [],
   
