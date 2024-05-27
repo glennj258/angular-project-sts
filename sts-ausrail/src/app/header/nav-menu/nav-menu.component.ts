@@ -8,6 +8,7 @@ import { NavMenuToggleService } from '../nav-menu/nav-menu-toggle.service';
 })
 export class NavMenuComponent {
     isLargeScreen = false;
+    isMenuOpen = false;
 
     constructor(private toggleMenuService: NavMenuToggleService) {}
 
@@ -25,6 +26,12 @@ export class NavMenuComponent {
 
     checkScreenSize() {
       this.isLargeScreen = window.innerWidth >= 768; // set to the tailwind mdium breakpoint of 768px (sm: 640, lg: 1024)
+    }
+
+    ngOnInit() {
+      this.toggleMenuService.toggleState$.subscribe(state => {
+        this.isMenuOpen = state;
+      });
     }
 
     // within component action
