@@ -8,4 +8,8 @@
         <!-- absolute right-0 -->
         <app-nav-menu></app-nav-menu>
     </div>
+
+</div>
+<div [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
+    <app-nav-menu-items></app-nav-menu-items>
 </div>

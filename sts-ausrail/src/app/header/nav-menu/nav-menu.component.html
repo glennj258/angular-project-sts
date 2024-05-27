@@ -1,12 +1,21 @@
 <div>
 
-
-    <button class="text-3xl text-violet-900 items-center p-2 md:hidden">
+    <button (click)="toggleMenu()" class="text-3xl text-violet-900 items-center p-2 md:hidden">
        
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
     </button>
+
+    <div>
+    </div>
+
+
+    <!-- 
+    Within component version
+    <div [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
+        Hello
+    </div> -->
 
     <!-- <nav class="bg-white border-gray-200 dark:bg-gray-900">
 
