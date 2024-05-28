@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { NavMenuComponent } from './header/nav-menu/nav-menu.component';
 import { NavMenuItemsComponent } from './header/nav-menu-items/nav-menu-items.component';
+import { PageGridComponent } from './page-grid/page-grid.component';
+import { Stage1Component } from './stage-1/stage-1.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NavMenuItemsComponent } from './header/nav-menu-items/nav-menu-items.co
     HomeComponent,
     HeaderComponent,
     NavMenuComponent,
-    NavMenuItemsComponent
+    NavMenuItemsComponent,
+    PageGridComponent,
+    Stage1Component
   ],
   imports: [
     BrowserModule,
