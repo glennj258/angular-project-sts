@@ -3,19 +3,19 @@
     <a routerLink="/" routerLinkActive="active">Home</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
 </nav> -->
-<div class="fixed w-full">
+<div id="navbar" class="fixed w-full">
     <app-header></app-header>
 </div>
 
 <div class="snap-container h-screen overflow-y-scroll snap-y snap-mandatory">
-    <div class="p-9"></div>
     <section id="Home" class="snap-start h-screen">
-        <div class="p-9"></div>
+        <div id="buffer" class="buffer"></div>
         <app-page-grid></app-page-grid>
     </section>
     
     <section id="Stage 1" class="snap-start h-screen">
-        <div class="p-9"></div>
+        <div id="buffer" class="buffer"></div>
+        <!-- <div class="p-9"></div> -->
         <app-page-grid></app-page-grid>
     </section>
 </div>
