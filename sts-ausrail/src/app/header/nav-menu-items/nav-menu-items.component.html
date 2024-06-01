@@ -1,5 +1,15 @@
 <div class="w-full md:block md:w-auto">
     <div class="w-full md:block md:w-auto">
+      <div class="font-medium flex flex-col md:p-0 bg-violet-50 md:flex-row
+      rtl:space-x-reverse md:mt-0 md:border-0 md:bg-violet-50">
+      <button (click)="handleMenuSelection('Home')" class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
+        Home
+      </button>
+      <button (click)="handleMenuSelection('Stage 1')" class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
+        Stage 1
+      </button>
+
+      </div>
         <ul class="font-medium flex flex-col md:p-0 bg-violet-50 md:flex-row
           rtl:space-x-reverse md:mt-0 md:border-0 md:bg-violet-50">
           <li (click)="scrollToSection('Stage 1')">
