@@ -5,7 +5,9 @@
       <button (click)="handleMenuSelection('Home')" class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
         Home
       </button>
-      <button (click)="handleMenuSelection('Stage 1')" class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
+      <button (click)="handleMenuSelection('Stage 1')" 
+              class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300"
+              [ngClass]="{'bg-violet-100 md:bg-violet-50': this.activeSection === 'Home'}">
         Stage 1
       </button>
 

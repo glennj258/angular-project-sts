@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy , AfterViewInit {
 
   ngOnInit(): void {
     this.adjustBufferHeight();
+    console.log("Buffer height = ",  document.getElementById('navbar')?.offsetHeight)
     // this.setDefaultBuffer();
 
     this.scrollSubscription = this.scrollService.scrollToSection$.subscribe(sectionId => {
@@ -24,10 +25,12 @@ export class HomeComponent implements OnInit, OnDestroy , AfterViewInit {
 
   ngOnDestroy() {
     this.scrollSubscription.unsubscribe();
+
   }
 
   ngAfterViewInit(): void {
     this.adjustBufferHeight();
+    console.log("AfterViewInit run")
   }
 
   @HostListener('window:resize')
@@ -41,6 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy , AfterViewInit {
   private adjustBufferHeight(): void {
     const navbar = document.getElementById('navbar');
     const buffers = document.querySelectorAll('.buffer');
+    console.log("Buffer height = ",  document.getElementById('navbar')?.offsetHeight)
     if (navbar) {
       const navbarHeight = navbar.offsetHeight;
       buffers.forEach(buffer => {
