@@ -15,48 +15,13 @@
         Stage 1
       </button>
 
+      <button (click)="handleMenuSelection('Stage 2')" 
+      class="text-left block py-6 px-3 text-violet-900 border-b-2 md:border-b-4 border-violet-300"
+      [ngClass]="{'border-violet-700 bg-violet-100 md:bg-violet-50 border-b-4 md:border-b-2': this.activeSection === 'Stage 2'}">
+      Stage 2
+    </button>
+
       <!-- Very difficult to make it so the selected border is thicker than an unselected border -->
      
-
-      </div>
-        <ul class="font-medium flex flex-col md:p-0 bg-violet-50 md:flex-row
-          rtl:space-x-reverse md:mt-0 md:border-0 md:bg-violet-50">
-          <li (click)="scrollToSection('Stage 1')">
-              <a href="#Stage 1" class="block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
-                  Stage 1</a>
-          </li>
-          <li>
-            <div>
-            <a href="#" class="block py-6 px-3 text-violet-900 bg-violet-100 md:bg-violet-50 border-b-4 border-violet-700 transition-colors duration-300 
-              hover:bg-violet-200" aria-current="page">
-                Home</a>
-            </div>
-          </li>
-
-          <li>
-            <div class="border-b-2 border-violet-300 hover:border-violet-500 transition-colors duration-500 md:border-violet-50">
-            <a href="#Home" class="block py-6 px-3 text-violet-900 border-b-2 border-violet-50 transition-colors duration-500 
-            hover:bg-violet-200 hover:border-violet-500
-            md:border-violet-50">
-                Stage 2</a>
-            </div>
-          </li>
-          
-          <li>
-            <a href="#" class="block py-2 px-3 text-violet-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-violet-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-violet-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-violet-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-          </li>
-        </ul>
-      </div>
+  </div>
 </div>
-
-
-<!-- block py-2 px-3 text-violet bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 -->
