@@ -2,14 +2,21 @@
     <div class="w-full md:block md:w-auto">
       <div class="font-medium flex flex-col md:p-0 bg-violet-50 md:flex-row
       rtl:space-x-reverse md:mt-0 md:border-0 md:bg-violet-50">
-      <button (click)="handleMenuSelection('Home')" class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300">
+      
+      <button (click)="handleMenuSelection('Home')" 
+        class="text-left block py-6 px-3 text-violet-900 border-b-2 md:border-b-4 border-violet-300"
+        [ngClass]="{'border-violet-700 bg-violet-100 md:bg-violet-50 border-b-4 md:border-b-2': this.activeSection === 'Home'}">
         Home
       </button>
+
       <button (click)="handleMenuSelection('Stage 1')" 
-              class="text-left block py-6 px-3 text-violet-900 border-b-2 border-violet-300"
-              [ngClass]="{'bg-violet-100 md:bg-violet-50': this.activeSection === 'Home'}">
+        class="text-left block py-6 px-3 text-violet-900 border-b-2 md:border-b-4 border-violet-300"
+        [ngClass]="{'border-violet-700 bg-violet-100 md:bg-violet-50 border-b-4 md:border-b-2': this.activeSection === 'Stage 1'}">
         Stage 1
       </button>
+
+      <!-- Very difficult to make it so the selected border is thicker than an unselected border -->
+     
 
       </div>
         <ul class="font-medium flex flex-col md:p-0 bg-violet-50 md:flex-row

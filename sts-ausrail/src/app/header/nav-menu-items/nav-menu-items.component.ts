@@ -12,11 +12,15 @@ export class NavMenuItemsComponent implements OnInit {
   isMenuOpen = false;
   isElementVisible: boolean = false;
   activeSection = '';
+  private observer: IntersectionObserver;
+  private observers: IntersectionObserver[];
 
-  constructor(private scrollService: ScrollService, 
+  constructor(
+    private scrollService: ScrollService, 
     private toggleMenuService: NavMenuToggleService, 
     private intersectionObserverService: IntersectionObserverService,
-    private elRef: ElementRef) {}
+    private elRef: ElementRef
+  ) {}
 
   ngOnInit() {
     this.toggleMenuService.toggleState$.subscribe(state => {
@@ -34,27 +38,28 @@ export class NavMenuItemsComponent implements OnInit {
 
     // const observer = new IntersectionObserver(this.handleIntersection, options);
 
-    const homeObserver = new IntersectionObserver((
-      entries,
-      sectionOneObserver
-    ) => {
-      entries.forEach(entry => {
-        //this.isElementVisible = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          this.activeSection = 'Home';
-        } else {
-          this.activeSection = '';
-        }
-      console.log(`Element is ${entry.isIntersecting ? 'visible' : 'not visible'}`);
-      });
-    },
-    options);
+    // const homeObserver = new IntersectionObserver((
+    //   entries,
+    //   sectionOneObserver
+    // ) => {
+    //   entries.forEach(entry => {
+    //     //this.isElementVisible = entry.isIntersecting;
+    //     if (entry.isIntersecting) {
+    //       this.activeSection = 'Home';
+    //       console.log(`Element is ${entry.isIntersecting ? 'visible' : 'not visible'}`);
+    //       console.log(entry);
+    //     } else {
+    //       this.activeSection = '';
+    //     }
+    //   });
+    // },
+    // options);
 
-    if (element instanceof HTMLElement) {
-      homeObserver.observe(element);
-    } {
-      console.error("Element with id 'Home' not found");
-    }
+    // if (element instanceof HTMLElement) {
+    //   homeObserver.observe(element);
+    // } {
+    //   console.error("Element with id 'Home' not found");
+    // }
 
     // Get the native element of the component
     //const targetElement = this.observedElement.nativeElement;
@@ -64,16 +69,48 @@ export class NavMenuItemsComponent implements OnInit {
 }
 
     ngAfterViewInit() {
+
+      const options = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the element is visible
+      };
+
         // Select all <section> elements within the app
-      const elements = this.elRef.nativeElement.querySelectorAll('section');
+      const elements = document.querySelectorAll('section');
 
       // Convert NodeList to an array
       const elementsArray = Array.from(elements);
+
+      elements.forEach(element => {
+        console.log(element);
+      });
+
+      console.log(elementsArray)
+      // Initialize the Intersection Observer
+      this.observer = this.createIntersectionObserver(elementsArray, this.onIntersection.bind(this), options);
     }
 
-  // ngOnDestroy(){
-  //   this.observer.disconnect();
-  // }
+  ngOnDestroy(){
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  onIntersection(entries: IntersectionObserverEntry[]) {
+    // if (entry.isIntersecting) {
+    //   this.activeSection = entry.target.id;
+    // }
+
+    // const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.activeSection = entry.target.id;
+          console.log(this.activeSection)
+          console.log(entry)
+        }
+      });
+  }
 
   handleMenuSelection(sectionId:string): void {
     this.scrollToSection(sectionId);
