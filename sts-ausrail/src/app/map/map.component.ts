@@ -1,0 +1,84 @@
+import { Component, OnInit} from '@angular/core';
+
+import Map from '@arcgis/core/Map';
+import MapView from '@arcgis/core/views/MapView';
+import CSVLayer from '@arcgis/core/layers/CSVLayer';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import SimpleLineSymbol from '@arcgis/core/symbols/SimpleLineSymbol';
+import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
+
+import Zoom from '@arcgis/core/widgets/Zoom'
+import Attribution from '@arcgis/core/widgets/Attribution'
+import Home from '@arcgis/core/widgets/Home'
+
+@Component({
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrl: './map.component.css'
+})
+export class MapComponent implements OnInit {
+
+  csvLayer: CSVLayer = new CSVLayer({
+    url: 'https://glenn-james.maps.arcgis.com/sharing/rest/content/items/cb89970796e64b78a5295a7af8e24356/data', // Replace with the actual URL of your CSV file
+    title: 'CSV Layer',
+    latitudeField: 'Latitude',
+    longitudeField: 'Longitude'
+  });
+
+    // Create a feature layer with your feature service or feature layer URL
+    featureLayer:FeatureLayer = new FeatureLayer({
+      url: 'https://services6.arcgis.com/0GC4ZQT1X11NdF4C/arcgis/rest/services/CBR_SYD_Train_Route_NSW_merged/FeatureServer'
+    });
+
+
+
+  ngOnInit(): void {
+    // Create a map
+    const map = new Map({
+      basemap: 'gray-vector'
+    });
+
+    // Create a map view
+    const view = new MapView({
+      container: 'mapView',
+      map: map,
+      center: [149.115, -35.287], // Coordinates for Los Angeles
+      zoom: 11,
+      ui: {
+        components: ["zoom", "attribution"]  // Include zoom and attribution
+      }
+    });
+
+      // Define the symbol for the line
+      const lineSymbol = new SimpleLineSymbol({
+        color: [226, 119, 40], // RGB color values
+        width: 2
+      });
+  
+      // Define the renderer using the symbol
+      const renderer = new SimpleRenderer({
+        symbol: lineSymbol
+      });
+
+      this.featureLayer.renderer = renderer
+
+      map.add(this.featureLayer)
+
+
+
+      // Add a Home widget
+      var homeWidget = new Home({view: view});
+      view.ui.add(homeWidget, "top-left");
+  
+      // Add Attribution widget to display "Powered by Esri" - doesn't work
+      var attributionWidget = new Attribution({view: view});
+      view.ui.add(attributionWidget, "bottom-right");
+  }
+
+  // ngOnDestroy(): void {
+  //   if (this.view) {
+  //     this.view.destroy();
+  //   }
+  // }
+
+}

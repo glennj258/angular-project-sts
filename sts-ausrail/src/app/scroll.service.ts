@@ -9,6 +9,7 @@ export class ScrollService {
   scrollToSection$ = this.scrollToSectionSource.asObservable();
 
   scrollToSection(sectionId: string) {
+    console.log("Scrolling..")
     this.scrollToSectionSource.next(sectionId);
   }
 }

@@ -10,6 +10,8 @@ import { NavMenuComponent } from './header/nav-menu/nav-menu.component';
 import { NavMenuItemsComponent } from './header/nav-menu-items/nav-menu-items.component';
 import { PageGridComponent } from './page-grid/page-grid.component';
 import { Stage1Component } from './stage-1/stage-1.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { Stage1Component } from './stage-1/stage-1.component';
     NavMenuComponent,
     NavMenuItemsComponent,
     PageGridComponent,
-    Stage1Component
+    Stage1Component,
+    MainPageComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
