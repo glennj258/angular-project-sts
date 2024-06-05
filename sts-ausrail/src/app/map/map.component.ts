@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
@@ -14,7 +14,8 @@ import Home from '@arcgis/core/widgets/Home'
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrl: './map.component.css'
+  styleUrl: './map.component.css',
+  encapsulation: ViewEncapsulation.Emulated 
 })
 export class MapComponent implements OnInit {
 
@@ -26,9 +27,14 @@ export class MapComponent implements OnInit {
   });
 
     // Create a feature layer with your feature service or feature layer URL
-    featureLayer:FeatureLayer = new FeatureLayer({
+    nswLayer:FeatureLayer = new FeatureLayer({
       url: 'https://services6.arcgis.com/0GC4ZQT1X11NdF4C/arcgis/rest/services/CBR_SYD_Train_Route_NSW_merged/FeatureServer'
     });
+
+    hsrRoute:FeatureLayer = new FeatureLayer({
+      url: 'https://services6.arcgis.com/0GC4ZQT1X11NdF4C/arcgis/rest/services/CBR_SYD_AusRail_Sections/FeatureServer'
+      // definitionExpression: "OBJECTID= 1"
+    })
 
 
 
@@ -45,7 +51,7 @@ export class MapComponent implements OnInit {
       center: [149.115, -35.287], // Coordinates for Los Angeles
       zoom: 11,
       ui: {
-        components: ["zoom", "attribution"]  // Include zoom and attribution
+        components: [ "zoom", "attribution"]  // Include zoom and attribution
       }
     });
 
@@ -56,21 +62,26 @@ export class MapComponent implements OnInit {
       });
   
       // Define the renderer using the symbol
-      const renderer = new SimpleRenderer({
+      const nswRenderer = new SimpleRenderer({
         symbol: lineSymbol
       });
 
-      this.featureLayer.renderer = renderer
+      const hsrRenderer = new SimpleRenderer({
+        symbol: new SimpleLineSymbol({color:[109, 40, 217], width: 3})
+      })
 
-      map.add(this.featureLayer)
+      this.nswLayer.renderer = nswRenderer
+      this.hsrRoute.renderer = hsrRenderer
 
+      map.add(this.nswLayer)
 
+      map.add(this.hsrRoute)
 
       // Add a Home widget
       var homeWidget = new Home({view: view});
       view.ui.add(homeWidget, "top-left");
   
-      // Add Attribution widget to display "Powered by Esri" - doesn't work
+      // Add Attribution widget to display "Powered by Esri"
       var attributionWidget = new Attribution({view: view});
       view.ui.add(attributionWidget, "bottom-right");
   }
