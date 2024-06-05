@@ -78,7 +78,8 @@ export class MapComponent implements OnInit {
       map.add(this.hsrRoute)
 
       // Add a Home widget
-      var homeWidget = new Home({view: view});
+
+      const homeWidget = new Home({view: view});
       view.ui.add(homeWidget, "top-left");
   
       // Add Attribution widget to display "Powered by Esri"
