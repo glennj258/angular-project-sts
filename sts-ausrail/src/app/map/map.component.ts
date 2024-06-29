@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import CSVLayer from '@arcgis/core/layers/CSVLayer';
+import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleLineSymbol from '@arcgis/core/symbols/SimpleLineSymbol';
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
@@ -36,6 +37,10 @@ export class MapComponent implements OnInit {
       // definitionExpression: "OBJECTID= 1"
     })
 
+    // geojsonLayer:GeoJSONLayer = new GeoJSONLayer({
+    //   url: "https://glenn-james.maps.arcgis.com/home/item.html?id=52e9f781e2c84abfb55e16bc639ea0aa"
+    // })
+
 
 
   ngOnInit(): void {
@@ -48,8 +53,8 @@ export class MapComponent implements OnInit {
     const view = new MapView({
       container: 'mapView',
       map: map,
-      center: [149.115, -35.287], // Coordinates for Los Angeles
-      zoom: 11,
+      center: [150.15, -34.63],//[149.115, -35.287], // Coordinates for Los Angeles
+      zoom: 7,
       ui: {
         components: [ "zoom", "attribution"]  // Include zoom and attribution
       }
@@ -85,6 +90,19 @@ export class MapComponent implements OnInit {
       // Add Attribution widget to display "Powered by Esri"
       var attributionWidget = new Attribution({view: view});
       view.ui.add(attributionWidget, "bottom-right");
+
+            // // Create the GeoJSON Layer
+            // var geojsonLayer = new GeoJSONLayer({
+            //   url: geojsonUrl,
+            //   renderer: {
+            //     type: "simple",  // autocasts as new SimpleRenderer()
+            //     symbol: {
+            //       type: "simple-line",  // autocasts as new SimpleLineSymbol()
+            //       color: [226, 119, 40],
+            //       width: 4
+            //     }
+            //   }
+            // });
   }
 
   // ngOnDestroy(): void {
