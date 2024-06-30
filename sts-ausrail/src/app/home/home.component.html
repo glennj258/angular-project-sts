@@ -3,26 +3,31 @@
     <a routerLink="/" routerLinkActive="active">Home</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
 </nav> -->
-<div id="navbar" class="fixed w-full font-inter z-10"> <!-- Adding z index because map was in front of navbar-->
-    <app-header></app-header>
+
+<div class="grid grid-cols-2 h-screen">
+
+
+    <div id="navbar" class="font-inter z-10 col-span-2 max-h-58"> <!-- Adding z index because map was in front of navbar-->
+        <app-header></app-header>
+    </div>
+
+    <div class="snap-container h-full overflow-y-scroll snap-y snap-mandatory font-inter col-span-2">
+        <section id="Home" class="snap-start h-full z-20">
+            <!-- <div id="buffer" class="buffer"></div> -->
+            <app-main-page></app-main-page>
+        </section>
+        
+        <section id="Stage 1" class="snap-start h-full z-20">
+            <!-- <div id="buffer" class="buffer"></div> -->
+            <!-- <div class="p-9"></div> -->
+            <app-page-grid></app-page-grid>
+        </section>
+
+        <section id="Stage 2" class="snap-start h-full z-20">
+            <div id="buffer" class="buffer"></div>
+            <!-- <div class="p-9"></div> -->
+            <app-page-grid></app-page-grid>
+        </section>
+    </div>
+
 </div>
-
-<div class="snap-container h-screen overflow-y-scroll snap-y snap-mandatory font-inter">
-    <section id="Home" class="snap-start h-screen z-20">
-        <div id="buffer" class="buffer"></div>
-        <app-main-page></app-main-page>
-    </section>
-    
-    <section id="Stage 1" class="snap-start h-screen z-20">
-        <div id="buffer" class="buffer"></div>
-        <!-- <div class="p-9"></div> -->
-        <app-page-grid></app-page-grid>
-    </section>
-
-    <section id="Stage 2" class="snap-start h-screen z-20">
-        <div id="buffer" class="buffer"></div>
-        <!-- <div class="p-9"></div> -->
-        <app-page-grid></app-page-grid>
-    </section>
-</div>
-

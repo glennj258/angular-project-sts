@@ -5,12 +5,17 @@
         <!-- bg-green-200 -->
         High Speed Rail
     </div>
-    <div class="m-4 "> 
+    <div class="m-4 md:m-9"> 
+        <!-- For some reason, when the grid goes to large, the navbar extends to be 133px, so the margin can't be m-4 anymore 
+         or else there will be a gap -->
         <!-- bg-red-100 absolute right-0 -->
         <app-nav-menu></app-nav-menu>
     </div>
 
 </div>
+<!-- <div class="h-12">
+    
+</div> -->
 <div class="h-screen bg-violet-50" [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
     <app-nav-menu-items></app-nav-menu-items>
 </div>
