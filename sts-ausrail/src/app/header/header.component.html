@@ -1,5 +1,5 @@
 
-<div class="flex bg-violet-50 border-b-2 border-violet-700 shadow-underline justify-between">
+<div class="flex bg-violet-50 border-b-2 border-violet-700 shadow-underline justify-between z-40">
     <!-- justify-between -->
     <div class="flex m-4 text-xl text-violet-900 font-inter font-bold italic  items-center">
         <!-- bg-green-200 -->
@@ -16,6 +16,6 @@
 <!-- <div class="h-12">
     
 </div> -->
-<div class="h-screen bg-violet-50" [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
+<div class="h-screen w-full absolute z-20 bg-violet-50" [ngClass]="{'block': isMenuOpen, 'hidden': !isMenuOpen}">
     <app-nav-menu-items></app-nav-menu-items>
 </div>
