@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { GeojsonService } from '../geojson.service';
 
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
@@ -7,6 +8,7 @@ import GeoJSONLayer from '@arcgis/core/layers/GeoJSONLayer';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import SimpleLineSymbol from '@arcgis/core/symbols/SimpleLineSymbol';
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer';
+
 
 import Zoom from '@arcgis/core/widgets/Zoom'
 import Attribution from '@arcgis/core/widgets/Attribution'
@@ -19,6 +21,8 @@ import Home from '@arcgis/core/widgets/Home'
   encapsulation: ViewEncapsulation.Emulated 
 })
 export class MapComponent implements OnInit {
+
+  constructor(private geojsonService: GeojsonService) { }
 
   csvLayer: CSVLayer = new CSVLayer({
     url: 'https://glenn-james.maps.arcgis.com/sharing/rest/content/items/cb89970796e64b78a5295a7af8e24356/data', // Replace with the actual URL of your CSV file
@@ -38,9 +42,8 @@ export class MapComponent implements OnInit {
     })
 
     // geojsonLayer:GeoJSONLayer = new GeoJSONLayer({
-    //   url: "https://glenn-james.maps.arcgis.com/home/item.html?id=52e9f781e2c84abfb55e16bc639ea0aa"
+    //   url: "/Users/glennjames/Documents/GitHub/angular-project-sts/sts-ausrail/src/assets/CBR_SYD_Train_Route_NSW_merged_geojson.geojson"
     // })
-
 
 
   ngOnInit(): void {
@@ -78,9 +81,23 @@ export class MapComponent implements OnInit {
       this.nswLayer.renderer = nswRenderer
       this.hsrRoute.renderer = hsrRenderer
 
-      map.add(this.nswLayer)
+      //console.log(this.geojsonLayer)
 
-      map.add(this.hsrRoute)
+      //map.add(this.nswLayer)
+
+      //map.add(this.hsrRoute)
+
+      this.geojsonService.getGeojsonData().subscribe(data => {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const geojsonLayer = new GeoJSONLayer({
+          url: url
+        });
+  
+        map.add(geojsonLayer);
+        
+      });
 
       // Add a Home widget
 
@@ -90,6 +107,8 @@ export class MapComponent implements OnInit {
       // Add Attribution widget to display "Powered by Esri"
       var attributionWidget = new Attribution({view: view});
       view.ui.add(attributionWidget, "bottom-right");
+
+
 
             // // Create the GeoJSON Layer
             // var geojsonLayer = new GeoJSONLayer({

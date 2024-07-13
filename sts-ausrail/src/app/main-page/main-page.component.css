@@ -1,0 +1,6 @@
+.group .child {
+    transition: transform 0.3s ease-in-out;
+  }
+.group:hover .child {
+    transform: translateY(2px);
+  }
