@@ -74,6 +74,11 @@ export class MapComponent implements OnInit {
         symbol: lineSymbol
       });
 
+      // Define the renderer using the symbol
+      const nswUnusedRenderer = new SimpleRenderer({
+        symbol: new SimpleLineSymbol({color:[226, 119, 40], width: 2})
+      });
+
       const hsrRenderer = new SimpleRenderer({
         symbol: new SimpleLineSymbol({color:[109, 40, 217], width: 3})
       })
@@ -87,16 +92,46 @@ export class MapComponent implements OnInit {
 
       //map.add(this.hsrRoute)
 
+      // geojson template
       this.geojsonService.getGeojsonData().subscribe(data => {
         const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
 
         const geojsonLayer = new GeoJSONLayer({
-          url: url
+          url: url,
+          renderer: nswRenderer,
+          opacity: 0.5
         });
   
         map.add(geojsonLayer);
-        
+
+      });
+
+      this.geojsonService.getGeojsonTfNSWP1().subscribe(data => {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const TfNSWP1_geojson = new GeoJSONLayer({
+          url: url,
+          renderer: nswRenderer
+        });
+
+        map.add(TfNSWP1_geojson);
+
+      });
+
+      this.geojsonService.getGeojsonAusRailP1().subscribe(data => {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const AusRailP1_geojson = new GeoJSONLayer({
+          url: url
+        });
+
+        AusRailP1_geojson.renderer = hsrRenderer;
+
+        map.add(AusRailP1_geojson);
+
       });
 
       // Add a Home widget
